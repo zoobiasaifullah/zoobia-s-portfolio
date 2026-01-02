@@ -285,11 +285,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-title {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(48px, 8vw, 72px);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    font-size: clamp(40px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.015em;
     color: var(--text);
     animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
 }
@@ -326,11 +326,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(36px, 5vw, 52px);
-    font-weight: 700;
-    margin-bottom: 56px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    margin-bottom: 48px;
     color: var(--text);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     text-align: center;
 }
 
@@ -382,17 +382,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-content h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
     color: var(--text);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
 }
 
 .project-content p {
     color: var(--text-secondary);
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.5;
     font-weight: 400;
     max-width: 280px;
 }
@@ -454,16 +454,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .carousel-card h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
     color: var(--text);
 }
 
 .carousel-card p {
     color: var(--text-secondary);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .carousel-dots {
@@ -533,9 +533,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .tool-item strong {
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text);
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -570,24 +570,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .bio h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
     color: var(--text);
 }
 
 .bio p {
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.6;
     color: var(--text-secondary);
     font-weight: 400;
 }
 
 .experience h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 32px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 28px;
     color: var(--text);
 }
 
@@ -608,9 +608,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .experience-item h4 {
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    margin-bottom: 8px;
-    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 6px;
+    font-weight: 600;
     color: var(--text);
 }
 
@@ -713,16 +713,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-column h4 {
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
     color: var(--text);
 }
 
 .footer-column p,
 .footer-column a {
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
     text-decoration: none;
     display: block;
