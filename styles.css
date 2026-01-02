@@ -604,7 +604,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .tool-item {
     background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
-    padding: 24px 20px;
+    padding: 32px 24px;
     border-radius: 20px;
     text-align: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -613,16 +613,20 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    min-height: 140px;
+    justify-content: center;
 }
 
 .tool-logo {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: transparent;
     mix-blend-mode: normal;
+    border-radius: 12px;
+    padding: 4px;
 }
 
 .tool-icon {
@@ -632,9 +636,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tool-item span {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--text);
+    line-height: 1.4;
 }
 
 .tool-item:hover {
