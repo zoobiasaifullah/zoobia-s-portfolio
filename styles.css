@@ -351,7 +351,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 320px;
+    height: 400px;
     border: none;
     box-shadow: var(--md3-elevation-1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -775,6 +775,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .project-card {
         padding: 32px;
+        height: 360px;
     }
     
     .bio {
@@ -817,6 +818,7 @@ h1, h2, h3, h4, h5, h6 {
     .project-card {
         padding: 32px;
         border-radius: 28px;
+        height: 340px;
     }
     
     .tools-grid {
@@ -904,6 +906,7 @@ h1, h2, h3, h4, h5, h6 {
     .project-card {
         padding: 28px;
         border-radius: 24px;
+        height: 320px;
     }
     
     .project-card:hover {
@@ -1039,6 +1042,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .project-card {
         padding: 20px;
+        height: 300px;
     }
     
     .project-content h3 {
