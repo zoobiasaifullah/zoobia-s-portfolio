@@ -616,6 +616,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 12px;
 }
 
+.tool-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .tool-icon {
     color: var(--primary);
     opacity: 0.9;
@@ -636,6 +643,10 @@ h1, h2, h3, h4, h5, h6 {
 .tool-item:hover .tool-icon {
     transform: scale(1.1);
     opacity: 1;
+}
+
+.tool-item:hover .tool-logo {
+    transform: scale(1.1);
 }
 
 .tool-item strong {
