@@ -781,8 +781,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .cards-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 28px;
     }
 }
 
@@ -834,11 +833,11 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .cards-container {
-        gap: 20px;
+        gap: 24px;
     }
     
     .info-card {
-        padding: 28px;
+        padding: 36px 40px;
     }
     
     .nav-menu {
@@ -926,12 +925,16 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0;
     }
     
+    .cards-container {
+        gap: 20px;
+    }
+    
     .info-card {
-        padding: 24px;
+        padding: 28px 32px;
     }
     
     .info-card p {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.6;
     }
     
