@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const carouselContainer = document.querySelector('.carousel-container');
 const carouselCards = document.querySelectorAll('.carousel-card');
 const dots = document.querySelectorAll('.dot');
+const arrowLeft = document.querySelector('.carousel-arrow-left');
+const arrowRight = document.querySelector('.carousel-arrow-right');
 let currentIndex = 0;
 
 // Auto-advance carousel every 5 seconds
@@ -129,6 +131,23 @@ function updateCarousel() {
         dot.classList.toggle('active', index === currentIndex);
     });
 }
+
+// Arrow click handlers
+arrowLeft.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + carouselCards.length) % carouselCards.length;
+    updateCarousel();
+    // Reset auto-advance timer
+    clearInterval(autoAdvanceInterval);
+    autoAdvanceInterval = setInterval(autoAdvance, 5000);
+});
+
+arrowRight.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % carouselCards.length;
+    updateCarousel();
+    // Reset auto-advance timer
+    clearInterval(autoAdvanceInterval);
+    autoAdvanceInterval = setInterval(autoAdvance, 5000);
+});
 
 // Dot click handlers
 dots.forEach((dot, index) => {

@@ -62,7 +62,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 32px;
 }
 
 .bg-animation {
@@ -328,7 +328,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 600;
-    margin-bottom: 48px;
+    margin-bottom: 56px;
     color: var(--text);
     letter-spacing: -0.01em;
     text-align: center;
@@ -409,21 +409,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-wrapper {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
+    padding: 0 60px;
 }
 
 .carousel-container {
     display: flex;
-    gap: 24px;
+    gap: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    padding: 8px;
     margin-bottom: 32px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    border-radius: 24px;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -431,10 +432,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-card {
-    flex: 0 0 calc(33.333% - 16px);
-    min-width: 300px;
+    flex: 0 0 100%;
+    width: 100%;
     background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 50%, var(--gradient-3) 100%);
-    padding: 40px 32px;
+    padding: 56px 48px;
     border-radius: 24px;
     text-align: center;
     scroll-snap-align: start;
@@ -447,23 +448,20 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--md3-elevation-3);
 }
 
-.carousel-icon {
-    font-size: 56px;
-    margin-bottom: 20px;
-}
-
 .carousel-card h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     color: var(--text);
 }
 
 .carousel-card p {
     color: var(--text-secondary);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .carousel-dots {
@@ -595,7 +593,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--gradient-3) 0%, var(--gradient-1) 100%);
     padding: 28px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     border: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--md3-elevation-1);
@@ -783,8 +781,8 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .carousel-card {
-        flex: 0 0 calc(50% - 12px);
-        min-width: 280px;
+        flex: 0 0 100%;
+        padding: 48px 32px;
     }
 }
 
@@ -837,7 +835,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .carousel-card {
         flex: 0 0 100%;
-        min-width: 100%;
+        padding: 40px 24px;
     }
     
     .nav-menu {
@@ -925,8 +923,13 @@ h1, h2, h3, h4, h5, h6 {
         padding: 32px 24px;
     }
     
-    .carousel-icon {
-        font-size: 48px;
+    .carousel-wrapper {
+        padding: 0 52px;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
     }
     
     .project-arrow {
@@ -1055,6 +1058,20 @@ h1, h2, h3, h4, h5, h6 {
     
     .about-text p {
         font-size: 0.875rem;
+    }
+    
+    .carousel-wrapper {
+        padding: 0 48px;
+    }
+    
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .carousel-arrow svg {
+        width: 20px;
+        height: 20px;
     }
 }
 
