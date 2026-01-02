@@ -422,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: visible;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    gap: 24px;
+    gap: 16px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     padding: 8px 0;
@@ -434,9 +434,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .info-card {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
+    flex: 0 0 calc(100% - 8px);
+    width: calc(100% - 8px);
+    min-width: calc(100% - 8px);
     background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-2) 50%, var(--gradient-3) 100%);
     padding: 40px 48px;
     border-radius: 24px;
