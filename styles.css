@@ -632,8 +632,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Increase size for Figma and Miro logos specifically */
 .tool-item:nth-child(1) .tool-logo,
 .tool-item:nth-child(2) .tool-logo {
-    width: 80px;
-    height: 80px;
+    width: 96px;
+    height: 96px;
     padding: 0;
 }
 
