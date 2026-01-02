@@ -99,4 +99,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// ==================== 
+// Carousel Functionality
+// ====================
+
+const carouselContainer = document.querySelector('.carousel-container');
+const carouselCards = document.querySelectorAll('.carousel-card');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+
+// Auto-advance carousel every 5 seconds
+function autoAdvance() {
+    currentIndex = (currentIndex + 1) % carouselCards.length;
+    updateCarousel();
+}
+
+let autoAdvanceInterval = setInterval(autoAdvance, 5000);
+
+// Update carousel position and active states
+function updateCarousel() {
+    const scrollPosition = carouselCards[currentIndex].offsetLeft - carouselContainer.offsetLeft;
+    carouselContainer.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// Dot click handlers
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        // Reset auto-advance timer
+        clearInterval(autoAdvanceInterval);
+        autoAdvanceInterval = setInterval(autoAdvance, 5000);
+    });
+});
+
+// Update current index on manual scroll
+carouselContainer.addEventListener('scroll', () => {
+    const scrollPosition = carouselContainer.scrollLeft;
+    let newIndex = 0;
+    
+    carouselCards.forEach((card, index) => {
+        const cardPosition = card.offsetLeft - carouselContainer.offsetLeft;
+        if (Math.abs(scrollPosition - cardPosition) < 50) {
+            newIndex = index;
+        }
+    });
+    
+    if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        // Reset auto-advance timer
+        clearInterval(autoAdvanceInterval);
+        autoAdvanceInterval = setInterval(autoAdvance, 5000);
+    }
+});
+
 console.log('Portfolio website initialized successfully!');
