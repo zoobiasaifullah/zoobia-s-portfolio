@@ -99,4 +99,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// ==================== 
+// Carousel Functionality
+// ====================
+
+const cardsContainer = document.querySelector('.cards-container');
+const infoCards = document.querySelectorAll('.info-card');
+const indicators = document.querySelectorAll('.indicator');
+let currentSlide = 0;
+
+// Auto-advance carousel every 6 seconds
+function autoAdvance() {
+    currentSlide = (currentSlide + 1) % infoCards.length;
+    updateCarousel();
+}
+
+let carouselInterval = setInterval(autoAdvance, 6000);
+
+// Update carousel position
+function updateCarousel() {
+    const scrollPosition = infoCards[currentSlide].offsetLeft;
+    cardsContainer.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+// Indicator click handlers
+indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+        // Reset auto-advance timer
+        clearInterval(carouselInterval);
+        carouselInterval = setInterval(autoAdvance, 6000);
+    });
+});
+
+// Handle manual scroll
+cardsContainer.addEventListener('scroll', () => {
+    const scrollPosition = cardsContainer.scrollLeft;
+    const cardWidth = infoCards[0].offsetWidth;
+    const newSlide = Math.round(scrollPosition / cardWidth);
+    
+    if (newSlide !== currentSlide && newSlide < infoCards.length) {
+        currentSlide = newSlide;
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+        // Reset auto-advance timer
+        clearInterval(carouselInterval);
+        carouselInterval = setInterval(autoAdvance, 6000);
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+        clearInterval(carouselInterval);
+        carouselInterval = setInterval(autoAdvance, 6000);
+    } else if (e.key === 'ArrowRight' && currentSlide < infoCards.length - 1) {
+        currentSlide++;
+        updateCarousel();
+        clearInterval(carouselInterval);
+        carouselInterval = setInterval(autoAdvance, 6000);
+    }
+});
+
 console.log('Portfolio website initialized successfully!');
