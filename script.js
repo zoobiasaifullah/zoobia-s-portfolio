@@ -106,17 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const cardsContainer = document.querySelector('.cards-container');
 const infoCards = document.querySelectorAll('.info-card');
 const indicators = document.querySelectorAll('.indicator');
+const navPrev = document.querySelector('.carousel-nav-prev');
+const navNext = document.querySelector('.carousel-nav-next');
 let currentSlide = 0;
 
-// Auto-advance carousel every 6 seconds
+// Auto-advance carousel every 7 seconds (calmer timing)
 function autoAdvance() {
     currentSlide = (currentSlide + 1) % infoCards.length;
     updateCarousel();
 }
 
-let carouselInterval = setInterval(autoAdvance, 6000);
+let carouselInterval = setInterval(autoAdvance, 7000);
 
-// Update carousel position
+// Update carousel position with smooth transition
 function updateCarousel() {
     const scrollPosition = infoCards[currentSlide].offsetLeft;
     cardsContainer.scrollTo({
@@ -130,6 +132,21 @@ function updateCarousel() {
     });
 }
 
+// Navigation arrow handlers
+navPrev.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + infoCards.length) % infoCards.length;
+    updateCarousel();
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(autoAdvance, 7000);
+});
+
+navNext.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % infoCards.length;
+    updateCarousel();
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(autoAdvance, 7000);
+});
+
 // Indicator click handlers
 indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => {
@@ -137,7 +154,7 @@ indicators.forEach((indicator, index) => {
         updateCarousel();
         // Reset auto-advance timer
         clearInterval(carouselInterval);
-        carouselInterval = setInterval(autoAdvance, 6000);
+        carouselInterval = setInterval(autoAdvance, 7000);
     });
 });
 
@@ -154,7 +171,7 @@ cardsContainer.addEventListener('scroll', () => {
         });
         // Reset auto-advance timer
         clearInterval(carouselInterval);
-        carouselInterval = setInterval(autoAdvance, 6000);
+        carouselInterval = setInterval(autoAdvance, 7000);
     }
 });
 
@@ -164,12 +181,12 @@ document.addEventListener('keydown', (e) => {
         currentSlide--;
         updateCarousel();
         clearInterval(carouselInterval);
-        carouselInterval = setInterval(autoAdvance, 6000);
+        carouselInterval = setInterval(autoAdvance, 7000);
     } else if (e.key === 'ArrowRight' && currentSlide < infoCards.length - 1) {
         currentSlide++;
         updateCarousel();
         clearInterval(carouselInterval);
-        carouselInterval = setInterval(autoAdvance, 6000);
+        carouselInterval = setInterval(autoAdvance, 7000);
     }
 });
 
