@@ -35,6 +35,50 @@ navLinks.forEach(link => {
 });
 
 // ==================== 
+// Hero Gradient Orbs - Subtle Mouse Parallax
+// ====================
+
+document.addEventListener('mousemove', (e) => {
+    const orbs = document.querySelectorAll('.gradient-orb');
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    orbs.forEach((orb, index) => {
+        const speed = (index + 1) * 8;
+        const x = (mouseX - 0.5) * speed;
+        const y = (mouseY - 0.5) * speed;
+        
+        orb.style.transform = `translate(${x}px, ${y}px)`;
+    });
+});
+
+// Parallax effect on scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero-content');
+    const gradientBg = document.querySelector('.hero-gradient-bg');
+    
+    if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.6;
+    }
+    
+    if (gradientBg && scrolled < window.innerHeight) {
+        gradientBg.style.transform = `translateY(${scrolled * 0.15}px)`;
+    }
+});
+
+// ==================== 
+// Social Buttons - Subtle Effect
+// ====================
+
+document.querySelectorAll('.social-btn').forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        button.style.transition = 'all 0.3s ease';
+    });
+});
+
+// ==================== 
 // Smooth Scrolling for Navigation Links
 // ====================
 
