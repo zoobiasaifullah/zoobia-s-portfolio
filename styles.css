@@ -1202,7 +1202,7 @@ body.dark .tool-item:hover {
 .about-left {
     display: flex;
     flex-direction: column;
-    gap: 56px;
+    gap: 36px;
 }
 
 .about-text {
@@ -1234,9 +1234,9 @@ body.dark .tool-item:hover {
 
 .work-experience h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     color: var(--text);
     letter-spacing: -0.01em;
     text-align: left;
@@ -1360,9 +1360,9 @@ body.dark .photo-caption {
 
 .experience-item {
     background: linear-gradient(135deg, var(--gradient-3) 0%, var(--gradient-1) 100%);
-    padding: clamp(20px, 3vw, 28px) clamp(24px, 4vw, 32px);
-    border-radius: clamp(16px, 2.5vw, 20px);
-    margin-bottom: clamp(12px, 2vh, 16px);
+    padding: clamp(14px, 2vw, 18px) clamp(18px, 3vw, 22px);
+    border-radius: clamp(12px, 2vw, 16px);
+    margin-bottom: clamp(10px, 1.5vh, 12px);
     border: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--md3-elevation-1);
@@ -1390,21 +1390,21 @@ body.dark .experience-item:hover {
 
 .experience-item h4 {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
-    margin-bottom: 6px;
+    font-size: 15px;
+    margin-bottom: 4px;
     font-weight: 600;
     color: var(--text);
 }
 
 .experience-item p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-secondary);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     font-weight: 400;
 }
 
 .experience-item span {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
     opacity: 0.8;
     font-weight: 400;
