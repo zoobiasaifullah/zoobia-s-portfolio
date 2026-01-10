@@ -1399,17 +1399,47 @@ h1, h2, h3, h4, h5, h6 {
         left: -100%;
         top: 64px;
         flex-direction: column;
-        background: var(--surface);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         width: 100%;
         text-align: center;
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 8px 24px var(--shadow);
         padding: 24px 0;
         gap: 8px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-menu.active li {
+        animation: slideInMenuItem 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+    }
+
+    .nav-menu.active li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-menu.active li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-menu.active li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    @keyframes slideInMenuItem {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .hamburger {
