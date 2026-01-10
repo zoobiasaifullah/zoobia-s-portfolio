@@ -980,55 +980,18 @@ body.dark .carousel-nav:hover {
 
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: clamp(20px, 3vw, 28px);
-    max-width: min(1100px, 100%);
+    /* Mobile-first: 2 columns on small screens */
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(16px, 3vw, 24px);
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 clamp(16px, 4vw, 32px);
     justify-items: center;
 }
 
-/* Row 1: 5 items spanning 2 columns each */
-.tool-item:nth-child(1) {
-    grid-column: span 2;
-}
-
-.tool-item:nth-child(2) {
-    grid-column: span 2;
-}
-
-.tool-item:nth-child(3) {
-    grid-column: span 2;
-}
-
-.tool-item:nth-child(4) {
-    grid-column: span 2;
-}
-
-.tool-item:nth-child(5) {
-    grid-column: span 2;
-}
-
-/* Row 2: 4 items centered (start at column 2, each spans 2) */
-.tool-item:nth-child(6) {
-    grid-column: 2 / span 2;
-}
-
-.tool-item:nth-child(7) {
-    grid-column: 4 / span 2;
-}
-
-.tool-item:nth-child(8) {
-    grid-column: 6 / span 2;
-}
-
-.tool-item:nth-child(9) {
-    grid-column: 8 / span 2;
-}
-
 .tool-item {
     background: linear-gradient(135deg, var(--gradient-1) 0%, var(--gradient-3) 100%);
-    padding: clamp(24px, 3.5vw, 32px) clamp(20px, 3vw, 28px) clamp(20px, 3vw, 28px);
+    padding: clamp(20px, 3.5vw, 32px) clamp(16px, 3vw, 24px) clamp(16px, 3vw, 24px);
     border-radius: clamp(16px, 2.5vw, 20px);
     text-align: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1038,10 +1001,10 @@ body.dark .carousel-nav:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: clamp(150px, 22vw, 180px);
+    min-height: clamp(140px, 20vw, 180px);
     position: relative;
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
 }
 
 body.dark .tool-item {
@@ -1196,6 +1159,43 @@ body.dark .tool-item:hover {
 @media (min-width: 1024px) {
     .about-content {
         grid-template-columns: 1fr clamp(300px, 35vw, 400px);
+    }
+    
+    /* Desktop: 5 items in row 1, 4 items centered in row 2 */
+    .tools-grid {
+        grid-template-columns: repeat(10, 1fr);
+        max-width: min(1100px, 100%);
+        gap: clamp(20px, 2.5vw, 28px);
+    }
+    
+    /* Row 1: 5 items spanning 2 columns each */
+    .tool-item:nth-child(1),
+    .tool-item:nth-child(2),
+    .tool-item:nth-child(3),
+    .tool-item:nth-child(4),
+    .tool-item:nth-child(5) {
+        grid-column: span 2;
+    }
+    
+    /* Row 2: 4 items centered (starting at column 2, each spanning 2) */
+    .tool-item:nth-child(6) {
+        grid-column: 2 / span 2;
+    }
+    
+    .tool-item:nth-child(7) {
+        grid-column: 4 / span 2;
+    }
+    
+    .tool-item:nth-child(8) {
+        grid-column: 6 / span 2;
+    }
+    
+    .tool-item:nth-child(9) {
+        grid-column: 8 / span 2;
+    }
+    
+    .tool-item {
+        max-width: 200px;
     }
 }
 
@@ -1409,8 +1409,6 @@ body.dark .experience-item:hover {
     opacity: 0.8;
     font-weight: 400;
 }
-    font-size: 14px;
-}
 
 /* ==================== 
    Scroll Animations & Micro-interactions
@@ -1589,6 +1587,12 @@ body.dark .experience-item:hover {
         padding: clamp(28px, 4vw, 32px);
         min-height: clamp(300px, 40vw, 360px);
     }
+    
+    /* Tablet: 3 columns for toolkit */
+    .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 700px;
+    }
 }
 
 @media (max-width: 840px) {
@@ -1601,19 +1605,6 @@ body.dark .experience-item:hover {
         padding: clamp(24px, 4vw, 32px);
         border-radius: clamp(20px, 3vw, 28px);
         min-height: clamp(280px, 38vw, 340px);
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(clamp(130px, 22vw, 150px), 1fr));
-        gap: clamp(16px, 2.5vw, 20px);
-    }
-    
-    /* Reset grid positioning for smaller screens */
-    .tool-item:nth-child(6),
-    .tool-item:nth-child(7),
-    .tool-item:nth-child(8),
-    .tool-item:nth-child(9) {
-        grid-column: auto;
     }
     
     .carousel-wrapper {
@@ -1746,21 +1737,6 @@ body.dark .experience-item:hover {
         line-height: 1.6;
     }
     
-    .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: clamp(16px, 3vw, 20px);
-        max-width: 600px;
-        justify-items: center;
-    }
-    
-    /* Reset grid positioning */
-    .tool-item:nth-child(6),
-    .tool-item:nth-child(7),
-    .tool-item:nth-child(8),
-    .tool-item:nth-child(9) {
-        grid-column: auto;
-    }
-    
     .tool-item {
         padding: clamp(20px, 4vw, 28px) clamp(16px, 3vw, 20px);
         border-radius: clamp(14px, 3vw, 18px);
@@ -1817,12 +1793,6 @@ body.dark .experience-item:hover {
         font-size: 24px;
     }
     
-    .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        max-width: 400px;
-    }
-    
     .tool-item {
         min-height: 120px;
         padding: 18px 14px;
@@ -1838,16 +1808,6 @@ body.dark .experience-item:hover {
     .tool-item span {
         font-size: 11px;
         bottom: 12px;
-    }
-    
-    .tool-item {
-        padding: 20px;
-    }
-}
-    }
-    
-    .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
 
     .footer-content {
