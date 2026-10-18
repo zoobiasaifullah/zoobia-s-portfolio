@@ -80,9 +80,9 @@ export const experience = {
       role: 'UX Research Intern',
       org: 'Amplify Education',
       dates: 'Jun – Aug 2026',
-      // NDA: remove participant counts and survey details before launch (flagged in the brief).
+      // NDA-safe: no participant counts, metrics or tool-specific detail.
       description:
-        'Led a post-launch study of a K–2 practice feature: 12 teacher interviews, synthesis in Dovetail and Miro, and a shareout to product, design and curriculum. Also coded 100+ NPS comments and designed a statewide survey.',
+        'Led a post-launch UX research study of a K–2 practice feature: planned and ran teacher interviews, synthesized the findings, and shared recommendations with product, design and curriculum teams.',
     },
     {
       role: 'UX Accessibility Researcher',

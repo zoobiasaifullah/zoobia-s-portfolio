@@ -13,7 +13,7 @@ export const projects: Project[] = [
     ],
     role: 'UX Research Intern',
     team: 'Mentored by a Senior UX Researcher',
-    timeline: '3 weeks',
+    timeline: '4 weeks',
     tint: 'blue',
     thumb: { kind: 'browser', image: 'amplify-thumbnail-goblin', alt: 'Practice game screen with a goblin character and letter tiles' },
     nextTitle: 'K-2 Practice Games: designing for connection in early learning',
