@@ -1,5 +1,5 @@
 // Site-wide content. Edit here, not in components.
-// TODO(links): replace every value marked TODO before launch (see README "Before you launch").
+import { href } from '../lib/url';
 
 export const site = {
   name: 'Zoobia Saifullah',
@@ -11,10 +11,9 @@ export const site = {
   copyright: '© 2026 Zoobia Saifullah · zs295@njit.edu',
   links: {
     github: 'https://github.com/zoobiasaifullah',
-    linkedin: 'https://www.linkedin.com/in/zoobia-saifullah-syeda/', // TODO: your LinkedIn URL
-    x: '#', // TODO: your X URL (or delete the X button in ContactCard.astro)
-    resume: '#', // TODO: path to your PDF in /public (for example '/zoobia-saifullah-resume.pdf')
-    paper: '#', // TODO: ACM link to "Like, Comment & Caption"
+    linkedin: 'https://www.linkedin.com/in/zoobia-saifullah-syeda/',
+    resume: href('/Zoobia_Saifullah_Syeda_UXResume.pdf'), // file lives in /public
+    paper: 'https://dl.acm.org/doi/10.1145/3772318.3791868',
   },
 } as const;
 
