@@ -1,0 +1,83 @@
+---
+import Media from './Media.astro';
+import { lyraWalkthrough as steps } from '../data/case-studies/lyra-walkthrough';
+---
+
+<div class="walk" data-walk>
+  <div class="walk__stage">
+    {
+      steps.map((s, i) => (
+        <div class="walk__panel" id={`walk-panel-${i}`} role="tabpanel" aria-labelledby={`walk-tab-${i}`} hidden={i !== 0} tabindex="0">
+          <div class="walk__screen"><Media name={s.image} alt={s.alt} widths={[240, 480]} sizes="240px" position="center top" loading="lazy" /></div>
+          <div class="walk__copy">
+            <span class="eyebrow">Step {i + 1} of {steps.length}</span>
+            <h4 class="h4">{s.title}</h4>
+            <p>{s.text}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="walk__tabs" role="tablist" aria-label="Lyra walkthrough steps">
+    {
+      steps.map((s, i) => (
+        <button class="walk__tab" role="tab" id={`walk-tab-${i}`} aria-controls={`walk-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} type="button">
+          <span class="walk__num" aria-hidden="true">{i + 1}</span>
+          <span>{s.title}</span>
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-walk]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role=tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[role=tabpanel]'));
+    const select = (n: number, focus = false) => {
+      tabs.forEach((t, i) => {
+        t.setAttribute('aria-selected', String(i === n));
+        t.tabIndex = i === n ? 0 : -1;
+      });
+      panels.forEach((p, i) => (p.hidden = i !== n));
+      if (focus) tabs[n].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        const k = e.key;
+        if (k === 'ArrowRight' || k === 'ArrowDown') { e.preventDefault(); select((i + 1) % tabs.length, true); }
+        else if (k === 'ArrowLeft' || k === 'ArrowUp') { e.preventDefault(); select((i - 1 + tabs.length) % tabs.length, true); }
+        else if (k === 'Home') { e.preventDefault(); select(0, true); }
+        else if (k === 'End') { e.preventDefault(); select(tabs.length - 1, true); }
+      });
+    });
+  });
+</script>
+
+<style>
+  .walk { display: flex; flex-direction: column; gap: 16px; padding: 16px; background: var(--tint-lavender); border-radius: var(--radius-tile); }
+  .walk__stage { background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+  .walk__panel { display: flex; align-items: center; gap: 40px; padding: 32px; animation: rise-in var(--dur-slow) var(--ease-out-quint) both; }
+  .walk__panel[hidden] { display: none; }
+  .walk__screen { flex: none; width: 200px; aspect-ratio: 9 / 19; overflow: hidden; border-radius: 20px; border: 1px solid var(--border); background: var(--surface-alt); box-shadow: var(--shadow-card); }
+  .walk__copy { display: flex; flex-direction: column; gap: 8px; }
+  .walk__tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .walk__tab {
+    display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; text-align: left;
+    border-radius: var(--radius-sm); border: 1px solid transparent; background: transparent; color: var(--text-body);
+    font-size: 14px; line-height: 20px; font-weight: 500;
+    transition: background-color var(--dur-hover) var(--ease-out-quint), color var(--dur-hover) var(--ease-out-quint);
+  }
+  .walk__tab:hover { background: var(--surface); color: var(--text); }
+  .walk__tab[aria-selected='true'] { background: var(--surface); color: var(--text); border-color: var(--border); box-shadow: var(--shadow-card); }
+  .walk__num { display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 50%; background: var(--chip); color: var(--chip-text); font-size: 12px; font-weight: 600; }
+  .walk__tab[aria-selected='true'] .walk__num { background: var(--primary); color: var(--on-primary); }
+
+  @media (max-width: 767px) {
+    .walk { padding: 12px; }
+    .walk__panel { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px; }
+    .walk__screen { align-self: center; }
+    .walk__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

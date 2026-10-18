@@ -1,0 +1,43 @@
+---
+import Media from './Media.astro';
+
+interface Props {
+  caption: string;
+  image: string;
+  alt: string;
+  size?: 'hero' | 'collage' | 'small';
+  rot?: number;
+  class?: string;
+  style?: string;
+  priority?: boolean;
+}
+const { caption, image, alt, size = 'collage', rot = 0, class: cls = '', style = '', priority = false } = Astro.props;
+---
+
+<figure class:list={['polaroid', `polaroid--${size}`, cls]} style={`--rot:${rot}deg;${style}`}>
+  <span class="polaroid__tape" aria-hidden="true"></span>
+  <div class="polaroid__photo">
+    <Media name={image} {alt} widths={[240, 480, 720]} sizes={size === 'hero' ? '330px' : size === 'small' ? '170px' : '250px'} loading={priority ? 'eager' : 'lazy'} />
+  </div>
+  <figcaption class="hand">{caption}</figcaption>
+</figure>
+
+<style>
+  .polaroid {
+    position: relative; display: flex; flex-direction: column; gap: 12px; padding: 14px 14px 16px;
+    background: var(--surface); border-radius: 4px; box-shadow: var(--shadow-polaroid);
+    transform: rotate(var(--rot)); width: var(--w, 248px);
+  }
+  .polaroid--hero { --w: 330px; }
+  .polaroid--small { --w: 164px; }
+  .polaroid__photo { overflow: hidden; border-radius: 2px; aspect-ratio: 220 / 200; background: var(--section-alt); }
+  .polaroid--hero .polaroid__photo { aspect-ratio: 302 / 324; }
+  .polaroid--small .polaroid__photo { aspect-ratio: 136 / 150; }
+  .polaroid figcaption { text-align: center; color: var(--text-body); }
+  .polaroid--small figcaption { font-size: 18px; line-height: 22px; }
+  .polaroid__tape {
+    position: absolute; top: -10px; left: 50%; width: 76px; height: 22px; margin-left: -38px;
+    background: var(--tape); opacity: 0.9; transform: rotate(-3deg);
+  }
+  .polaroid--hero .polaroid__tape { transform: none; }
+</style>

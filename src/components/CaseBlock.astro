@@ -1,0 +1,262 @@
+---
+import Media from './Media.astro';
+import Walkthrough from './Walkthrough.astro';
+import type { Block } from '../data/types';
+
+interface Props { block: Block; }
+const { block: b } = Astro.props;
+const showDrafts = import.meta.env.DEV;
+---
+
+{b.t === 'p' && <p class="cb-p">{b.text}</p>}
+{b.t === 'statement' && <p class="cb-statement">{b.text}</p>}
+{b.t === 'h3' && <h3 class="h4 cb-h3">{b.text}</h3>}
+
+{
+  b.t === 'callout' && (
+    <aside class="cb-callout">
+      <span class="eyebrow">{b.label}</span>
+      <p>{b.text}</p>
+    </aside>
+  )
+}
+
+{b.t === 'note' && <p class="chip chip--outline cb-note">{b.text}</p>}
+
+{
+  b.t === 'questions' && (
+    <ul class="cb-questions">
+      {b.items.map((q, i) => (
+        <li><span class="cb-q">Q{i + 1}</span><span>{q}</span></li>
+      ))}
+    </ul>
+  )
+}
+
+{
+  b.t === 'steps' && (
+    <ol class:list={['cb-steps', `cols-${b.cols ?? 2}`]}>
+      {b.items.map((s, i) => (
+        <li class="card cb-step">
+          <span class="cb-badge" aria-hidden="true">{i + 1}</span>
+          <h4 class="h4">{s.title}</h4>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+{
+  b.t === 'groups' && (
+    <div class="cb-block">
+      <h3 class="label">{b.label}</h3>
+      <ul class="cb-groups">
+        {b.items.map((g) => (
+          <li class="tile cb-group"><h4 class="h4">{g.title}</h4><p>{g.text}</p></li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+{
+  b.t === 'chips' && (
+    <div class="cb-block">
+      <h3 class="label">{b.label}</h3>
+      <ul class="chip-row">{b.items.map((c) => <li class="chip">{c}</li>)}</ul>
+    </div>
+  )
+}
+
+{
+  b.t === 'flow' && (
+    <ol class="cb-flow">
+      {b.items.map((f, i) => (
+        <li class:list={['tile', 'cb-flow__item', { 'is-highlight': f.highlight }]}>
+          <span class="eyebrow eyebrow--muted">Step {i + 1}</span>
+          <h4 class="h4">{f.title}</h4>
+          <p>{f.text}</p>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+{
+  b.t === 'stats' && (
+    <dl class:list={['cb-stats', { 'cb-stats--4': b.items.length > 3 }]}>
+      {b.items.map((s) => (
+        <div class="tile cb-stat"><dt>{s.value}</dt><dd>{s.label}</dd></div>
+      ))}
+    </dl>
+  )
+}
+
+{
+  b.t === 'table' && (
+    <div class="cb-table" role="table" aria-label={`${b.head[0]} and ${b.head[1]}`}>
+      <div class="cb-table__row cb-table__head" role="row">
+        <span role="columnheader" class="eyebrow eyebrow--muted">{b.head[0]}</span>
+        <span role="columnheader" class="eyebrow eyebrow--muted">{b.head[1]}</span>
+      </div>
+      {b.rows.map((r) => (
+        <div class="cb-table__row" role="row">
+          <div role="cell"><strong>{r.found}</strong><p>{r.foundText}</p></div>
+          <div role="cell"><p>{r.change}</p></div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+{
+  b.t === 'quote' && (!b.draft || showDrafts) && (
+    <figure class="cb-quote">
+      <blockquote>{b.text}</blockquote>
+      <figcaption class="label">{b.attribution}</figcaption>
+    </figure>
+  )
+}
+
+{
+  b.t === 'figure' && (
+    <figure class:list={['cb-figure', b.tint ? `tint-${b.tint}` : '']}>
+      <div class="cb-figure__frame"><Media name={b.image} alt={b.alt} widths={[640, 1000, 1600]} sizes="(min-width: 1280px) 800px, 90vw" fit="contain" /></div>
+      {b.caption && <figcaption class="small">{b.caption}</figcaption>}
+    </figure>
+  )
+}
+
+{
+  b.t === 'lists' && (
+    <div class="cb-lists">
+      {b.items.map((l) => (
+        <div class="tile cb-list">
+          <h4 class="h4">{l.title}</h4>
+          <ul>{l.bullets.map((x) => <li>{x}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+{
+  b.t === 'themes' && (
+    <ul class="cb-themes">
+      {b.items.map((t, i) => (
+        <li class="tile cb-theme"><span class="cb-badge" aria-hidden="true">{i + 1}</span><div><h4 class="h4">{t.title}</h4><p>{t.note}</p></div></li>
+      ))}
+    </ul>
+  )
+}
+
+{
+  b.t === 'matrix' && (
+    <figure class="cb-matrix">
+      <div class="cb-matrix__grid">
+        {['High impact · low effort', 'High impact · high effort', 'Low impact · low effort', 'Low impact · high effort'].map((label, i) => (
+          <div class:list={['cb-quad', { 'is-top': i < 2 }]}>
+            <span class="eyebrow eyebrow--muted">{label}</span>
+            <ul>
+              {b.quadrants[i].ideas.map((idea) => (
+                <li class:list={{ 'is-shipped': idea.shipped }}>
+                  {idea.text}
+                  {idea.shipped && <span class="sr-only"> (shipped in the prototype)</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <figcaption class="small">{b.caption}</figcaption>
+    </figure>
+  )
+}
+
+{
+  b.t === 'link' && (
+    <a class="link-btn" href={b.href}>{b.text}</a>
+  )
+}
+
+{b.t === 'walkthrough' && <Walkthrough />}
+
+<style>
+  .cb-p { max-width: 720px; }
+  .cb-statement { font-size: 22px; line-height: 32px; font-weight: 600; letter-spacing: -0.025em; color: var(--text); max-width: 760px; }
+  .cb-h3 { margin-top: 8px; }
+  .cb-block { display: flex; flex-direction: column; gap: 12px; }
+
+  .cb-callout { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px; border-left: 4px solid var(--primary); border-radius: 8px; background: var(--section-alt); }
+  .cb-callout p { color: var(--text); font-weight: 500; }
+  .cb-note { align-self: flex-start; white-space: normal; }
+
+  .cb-questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cb-questions li { display: flex; gap: 12px; padding: 16px; border-radius: var(--radius-sm); background: var(--section-alt); color: var(--text); }
+  .cb-q { flex: none; font-weight: 600; color: var(--primary); }
+
+  .cb-badge { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--primary); color: var(--on-primary); font-size: 14px; font-weight: 600; }
+  .cb-steps { display: grid; gap: 16px; }
+  .cb-steps.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cb-steps.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cb-step { display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: var(--radius-tile); }
+  .cb-step .cb-badge { margin-bottom: 4px; }
+
+  .cb-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .cb-group { display: flex; flex-direction: column; gap: 6px; padding: 20px; }
+
+  .cb-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .cb-flow__item { display: flex; flex-direction: column; gap: 6px; padding: 18px; }
+  .cb-flow__item.is-highlight { background: var(--chip); border-color: transparent; }
+
+  .cb-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; }
+  .cb-stats--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cb-stat { display: flex; flex-direction: column; gap: 4px; padding: 20px; }
+  .cb-stat dt { font-size: 36px; line-height: 44px; font-weight: 600; letter-spacing: -0.04em; color: var(--primary); }
+  .cb-stat dd { margin: 0; font-size: 14px; line-height: 22px; }
+
+  .cb-table { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-tile); overflow: hidden; background: var(--surface); }
+  .cb-table__row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 18px 20px; border-top: 1px solid var(--border); }
+  .cb-table__head { background: var(--section-alt); border-top: 0; }
+  .cb-table__row strong { color: var(--text); font-weight: 600; }
+  .cb-table__row p { font-size: 15px; line-height: 24px; }
+
+  .cb-quote { padding: 24px 28px; border-radius: var(--radius-tile); background: var(--tint-lavender); display: flex; flex-direction: column; gap: 12px; }
+  .cb-quote blockquote { font-size: 20px; line-height: 30px; font-weight: 500; color: var(--text); letter-spacing: -0.015em; }
+
+  .cb-figure { display: flex; flex-direction: column; gap: 8px; }
+  .cb-figure__frame { border-radius: var(--radius-tile); overflow: hidden; border: 1px solid var(--border); background: var(--section-alt); min-height: 240px; }
+  .cb-figure figcaption { color: var(--text-body); }
+  .tint-blue .cb-figure__frame { background: var(--tint-blue); }
+  .tint-lavender .cb-figure__frame { background: var(--tint-lavender); }
+  .tint-mint .cb-figure__frame { background: var(--tint-mint); }
+
+  .cb-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .cb-list { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .cb-list ul { display: flex; flex-direction: column; gap: 6px; padding-left: 18px; list-style: disc; }
+
+  .cb-themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cb-theme { display: flex; gap: 14px; padding: 20px; }
+  .cb-theme p { font-size: 15px; line-height: 24px; margin-top: 4px; }
+
+  .cb-matrix { display: flex; flex-direction: column; gap: 10px; }
+  .cb-matrix__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cb-quad { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: var(--radius-sm); background: var(--section-alt); border: 1px solid var(--border); }
+  .cb-quad.is-top { background: var(--surface); }
+  .cb-quad ul { display: flex; flex-direction: column; gap: 8px; }
+  .cb-quad li { padding: 8px 12px; border-radius: 8px; background: var(--surface-alt); border: 1px solid var(--border); font-size: 14px; line-height: 20px; }
+  .cb-quad li.is-shipped { background: var(--chip); border-color: transparent; color: var(--chip-text); font-weight: 500; }
+
+  @media (max-width: 1023px) {
+    .cb-steps.cols-3, .cb-groups { grid-template-columns: 1fr; }
+    .cb-stats--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 767px) {
+    .cb-statement { font-size: 19px; line-height: 28px; }
+    .cb-questions, .cb-steps.cols-2, .cb-themes, .cb-matrix__grid, .cb-stats { grid-template-columns: 1fr; }
+    .cb-table__head { display: none; }
+    .cb-table__row { grid-template-columns: 1fr; gap: 8px; }
+    .cb-table__row > div:last-child::before { content: 'What we changed'; display: block; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 4px; }
+  }
+</style>

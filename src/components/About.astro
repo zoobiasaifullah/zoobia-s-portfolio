@@ -1,0 +1,67 @@
+---
+import Polaroid from './Polaroid.astro';
+import Icon from './Icon.astro';
+import { about } from '../data/site';
+
+const pics = about.polaroids;
+---
+
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="container about__inner">
+    <div class="about__text" data-reveal>
+      <span class="eyebrow">About</span>
+      <h2 id="about-title" class="h2">{about.title}</h2>
+      <p class="lead">{about.lead}</p>
+      <p>{about.body}</p>
+      <p class="about__loc"><Icon name="pin" /> {about.location}</p>
+      <div class="about__tools">
+        <h3 class="label">Tools I use</h3>
+        <ul class="chip-row">
+          {about.tools.map((t) => <li class="chip">{t}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="collage" role="group" aria-label="Photos of Zoobia">
+      {
+        pics.map((p, i) => (
+          <div
+            class:list={['collage__item', { 'collage__item--mobile-only': p.mobileOnly }]}
+            data-reveal
+            style={`--i:${i};--dx:${p.d.x}px;--dy:${p.d.y}px;--mx:${p.m.x}px;--my:${p.m.y}px;`}
+          >
+            <Polaroid caption={p.caption} image={p.image} alt={p.alt} rot={p.d.rot} class="collage__pol" style={`--rot-m:${p.m.rot}deg;`} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .about { padding-block: 96px 48px; }
+  .about__inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; }
+  .about__text { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; max-width: 560px; flex: 1; }
+  .about__loc { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-weight: 500; }
+  .about__tools { display: flex; flex-direction: column; gap: 12px; padding-top: 8px; }
+
+  .collage { position: relative; flex: none; width: 480px; height: 600px; }
+  .collage__item { position: absolute; left: var(--dx); top: var(--dy); }
+  .collage__item--mobile-only { display: none; }
+  .collage__item :global(.polaroid) { transition: transform var(--dur-card) var(--ease-out-quint), box-shadow var(--dur-card) var(--ease-out-quint); }
+  .collage__item:hover :global(.polaroid) { transform: rotate(0deg) translateY(-6px); }
+
+  @media (max-width: 1023px) {
+    .about__inner { flex-direction: column; gap: 48px; }
+    .about__text { max-width: 640px; }
+    .collage { align-self: center; }
+  }
+  @media (max-width: 767px) {
+    .about { padding-block: 64px 32px; }
+    .collage { width: 358px; height: 500px; max-width: 100%; }
+    .collage__item { left: var(--mx); top: var(--my); }
+    .collage__item--mobile-only { display: block; }
+    .collage__item :global(.polaroid) { --w: 164px; transform: rotate(var(--rot-m)); }
+    .collage__item:hover :global(.polaroid) { transform: rotate(var(--rot-m)); }
+  }
+</style>

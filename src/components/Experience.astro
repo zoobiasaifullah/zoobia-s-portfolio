@@ -1,0 +1,60 @@
+---
+import { experience } from '../data/site';
+---
+
+<section class="exp" id="experience" aria-labelledby="exp-title">
+  <div class="container exp__inner">
+    <h2 id="exp-title" class="h2" data-reveal>{experience.title}</h2>
+
+    <ol class="exp__list">
+      {
+        experience.roles.map((r, i) => (
+          <li class="exp__item" data-reveal style={`--i:${i}`}>
+            <div class="exp__when label">{r.dates}</div>
+            <div class="exp__what">
+              <h3 class="h4">{r.role}</h3>
+              <p class="exp__org">{r.org}</p>
+              <p>{r.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="exp__earlier" data-reveal>
+      <h3 class="label">Earlier</h3>
+      <ul>
+        {
+          experience.earlier.map((e) => (
+            <li>
+              <span class="value">{e.role}</span>
+              <span>{e.org}</span>
+              <span class="label">{e.dates}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp { padding-block: 48px 96px; }
+  .exp__inner { display: flex; flex-direction: column; gap: 40px; }
+  .exp__list { display: flex; flex-direction: column; }
+  .exp__item { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 28px; border-top: 1px solid var(--border); }
+  .exp__item:last-child { border-bottom: 1px solid var(--border); }
+  .exp__when { padding-top: 4px; }
+  .exp__what { display: flex; flex-direction: column; gap: 4px; max-width: 760px; }
+  .exp__org { color: var(--primary); font-weight: 500; margin-bottom: 8px; }
+  .exp__earlier { display: flex; flex-direction: column; gap: 12px; }
+  .exp__earlier ul { display: flex; flex-direction: column; gap: 8px; }
+  .exp__earlier li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+  .exp__earlier li .label { margin-left: auto; }
+
+  @media (max-width: 767px) {
+    .exp { padding-block: 32px 64px; }
+    .exp__item { grid-template-columns: 1fr; gap: 6px; padding-block: 20px; }
+    .exp__earlier li .label { margin-left: 0; width: 100%; }
+  }
+</style>

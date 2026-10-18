@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+  <span class="moon"><Icon name="moon" /></span>
+  <span class="sun"><Icon name="sun" /></span>
+</button>
+
+<style>
+  .theme-toggle :global(svg) { transition: transform var(--dur-base) var(--ease-out-quint); }
+  .theme-toggle:hover :global(svg) { transform: rotate(-12deg); }
+  .sun { display: none; }
+  :global(:root[data-theme='dark']) .moon { display: none; }
+  :global(:root[data-theme='dark']) .sun { display: inline-flex; }
+  .moon, .sun { display: inline-flex; }
+  :global(:root:not([data-theme='dark'])) .sun { display: none; }
+</style>

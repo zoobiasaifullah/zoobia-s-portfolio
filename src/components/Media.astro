@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { findImage } from '../lib/assets';
+
+interface Props {
+  name?: string;
+  alt: string;
+  sizes?: string;
+  widths?: number[];
+  loading?: 'lazy' | 'eager';
+  fit?: 'cover' | 'contain';
+  position?: string;
+  class?: string;
+}
+const { name, alt, sizes = '100vw', widths = [480, 800, 1200], loading = 'lazy', fit = 'cover', position = 'center', class: cls = '' } = Astro.props;
+const img = findImage(name);
+---
+
+{
+  img ? (
+    <Image
+      src={img}
+      alt={alt}
+      widths={widths}
+      sizes={sizes}
+      loading={loading}
+      decoding="async"
+      format="webp"
+      quality={82}
+      class:list={['media', cls]}
+      style={`object-fit:${fit};object-position:${position}`}
+    />
+  ) : (
+    <div class:list={['media', 'media--missing', cls]} role="img" aria-label={alt} data-missing={name}>
+      {import.meta.env.DEV && name ? <span>{name}</span> : null}
+    </div>
+  )
+}
+
+<style>
+  .media { width: 100%; height: 100%; }
+  .media--missing {
+    display: grid; place-items: center;
+    background: repeating-linear-gradient(135deg, var(--surface-alt) 0 12px, var(--section-alt) 12px 24px);
+    color: var(--text-body); font-size: 12px; line-height: 16px; text-align: center; padding: 8px;
+  }
+</style>

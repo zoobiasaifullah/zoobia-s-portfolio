@@ -1,0 +1,111 @@
+---
+import Media from './Media.astro';
+import type { Project } from '../data/types';
+import { href } from '../lib/url';
+
+interface Props { project: Project; featured?: boolean; index?: number; }
+const { project: p, featured = false, index = 0 } = Astro.props;
+---
+
+<article class:list={['card', 'project', { 'project--featured': featured }]} data-reveal style={`--i:${index}`}>
+  <div class={`project__thumb tint-${p.tint}`}>
+    <div class:list={['window', { 'window--browser': p.thumb.kind === 'browser' }]}>
+      {
+        p.thumb.kind === 'browser' ? (
+          <>
+            <div class="window__bar" aria-hidden="true"><i /><i /><i /></div>
+            <div class="window__body">
+              <Media name={p.thumb.image} alt={p.thumb.alt} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 526px, 90vw" loading={index === 0 ? 'eager' : 'lazy'} position="center top" />
+            </div>
+          </>
+        ) : (
+          <div class="window__screens">
+            {p.thumb.images.map((s) => (
+              <div class="screen"><Media name={s.image} alt={s.alt} widths={[160, 320]} sizes="100px" position="center top" /></div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="project__body">
+    <ul class="chip-row" aria-label="Tags">
+      {p.tags.map((t) => <li class:list={['chip', { 'chip--accent': t.variant === 'accent' }]}>{t.label}</li>)}
+    </ul>
+    <div class="project__heading">
+      <h3 class="h3"><a class="project__link" href={href(`/work/${p.slug}/`)}>{p.title}</a></h3>
+      <p>{p.summary}</p>
+    </div>
+    <dl class="project__meta">
+      <div><dt class="label">Role</dt><dd class="value">{p.role}</dd></div>
+      <div><dt class="label">Team</dt><dd class="value">{p.team}</dd></div>
+      <div><dt class="label">Timeline</dt><dd class="value">{p.timeline}</dd></div>
+    </dl>
+    <span class="link-btn project__cta" aria-hidden="true">Read case study <span class="arrow">→</span></span>
+  </div>
+</article>
+
+<style>
+  .project {
+    position: relative; display: flex; flex-direction: column; padding: 12px; height: 100%;
+    transition: box-shadow var(--dur-card) var(--ease-out-quint), border-color var(--dur-card) var(--ease-out-quint);
+  }
+  .project:hover, .project:focus-within { box-shadow: var(--shadow-card-hover); border-color: var(--primary); }
+  .project--featured { display: grid; grid-template-columns: minmax(0, 606fr) minmax(0, 480fr); gap: 8px; align-items: stretch; }
+
+  .project__thumb {
+    position: relative; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+    padding: 48px 40px 0; border-radius: var(--radius-tile); min-height: 300px;
+  }
+  .project--featured .project__thumb { min-height: 456px; }
+  .tint-blue { background: var(--tint-blue); }
+  .tint-lavender { background: var(--tint-lavender); }
+  .tint-mint { background: var(--tint-mint); }
+
+  .window {
+    width: 100%; height: 100%; min-height: 200px; overflow: hidden; background: var(--surface);
+    border-radius: 12px 12px 0 0; box-shadow: var(--shadow-card);
+    transition: transform var(--dur-card) var(--ease-out-quint); will-change: transform;
+  }
+  .project:hover .window, .project:focus-within .window { transform: translateY(-16px); }
+  .window--browser { display: flex; flex-direction: column; }
+  .window__bar { display: flex; align-items: center; gap: 6px; height: 33px; padding: 0 14px; border-bottom: 1px solid var(--border); flex: none; }
+  .window__bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--outline); }
+  .window__body { flex: 1; min-height: 0; overflow: hidden; }
+  .window__screens { display: flex; justify-content: center; align-items: flex-start; gap: 14px; padding: 28px 16px 0; height: 100%; }
+  .screen {
+    flex: 0 1 84px; min-width: 0; aspect-ratio: 84 / 183; overflow: hidden; border-radius: 6px;
+    background: var(--surface-alt); box-shadow: 0 1px 3px rgb(0 0 0 / 0.12), 0 4px 12px rgb(0 0 0 / 0.1);
+  }
+  .project--featured .screen { flex-basis: 110px; }
+
+  .project__body { display: flex; flex-direction: column; gap: 16px; padding: 24px 16px 8px; justify-content: center; flex: 1; }
+  .project--featured .project__body { padding: 24px 32px; }
+  .project__heading { display: flex; flex-direction: column; gap: 8px; }
+  .project__heading h3 { font-size: 28px; }
+  .project__link::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-card); }
+  .project__link:focus-visible { outline: none; }
+  .project:has(.project__link:focus-visible) { outline: 2px solid var(--primary); outline-offset: 2px; }
+  .project__meta { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; }
+  .project__meta div { display: flex; flex-direction: column; gap: 2px; }
+  .project__meta dd { margin: 0; }
+  .project__cta { align-self: flex-start; }
+  .project:hover .project__cta .arrow, .project:focus-within .project__cta .arrow { transform: translateX(4px); }
+  .project:hover .project__cta, .project:focus-within .project__cta { color: var(--text); }
+
+  @media (max-width: 1023px) {
+    .project--featured { grid-template-columns: 1fr; }
+    .project--featured .project__thumb { min-height: 300px; }
+    .project--featured .project__body { padding: 24px 16px 8px; }
+  }
+  @media (max-width: 767px) {
+    .project__thumb { min-height: 200px; padding: 26px 22px 0; }
+    .project--featured .project__thumb { min-height: 200px; }
+    .window { min-height: 150px; }
+    .window__screens { gap: 8px; padding: 18px 10px 0; }
+    .project__heading h3 { font-size: 28px; }
+    .project--featured .project__body { padding: 20px 12px 4px; }
+    .project__body { padding: 20px 12px 4px; }
+  }
+</style>

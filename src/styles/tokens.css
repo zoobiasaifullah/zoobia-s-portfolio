@@ -1,0 +1,121 @@
+/* Design tokens. Source of truth: the Figma file's Color variables (Light / Dark modes).
+   Never hard-code a color in a component; use a token. */
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/poppins-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Caveat';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('../assets/fonts/caveat-latin-700-normal.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: light;
+
+  /* Color: light */
+  --bg: #fffbfe;
+  --surface: #ffffff;
+  --surface-alt: #fbf8fd;
+  --section-alt: #f7f2fa;
+  --text: #1c1b1f;
+  --text-body: #49454f;
+  --primary: #6750a4;
+  --on-primary: #ffffff;
+  --border: #e7e0ec;
+  --outline: #cac4d0;
+  --chip: #eaddff;
+  --chip-text: #6750a4;
+  --tint-lavender: #eee6ff;
+  --tint-mint: #e3f6ef;
+  --tint-blue: #e2f1fb;
+  --tape: #d9ccf5;
+  --step-eyebrow: #d9ccf7;
+  --nav-bg: rgb(255 251 254 / 0.85);
+  --shadow-card: 0 1px 3px rgb(64 43 115 / 0.06), 0 8px 24px -4px rgb(64 43 115 / 0.08);
+  --shadow-card-hover: 0 2px 6px rgb(64 43 115 / 0.08), 0 16px 36px -4px rgb(64 43 115 / 0.16);
+  --shadow-polaroid: 0 12px 28px -6px rgb(51 31 89 / 0.16);
+  --glow: 0 6px 20px rgb(103 80 164 / 0.35);
+
+  /* Type */
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-hand: 'Caveat', 'Bradley Hand', cursive;
+
+  /* Layout */
+  --page-max: 1440px;
+  --gutter: 160px;
+  --content: 1120px;
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-tile: 16px;
+  --radius-sm: 12px;
+
+  /* Motion (matches the "Motion & interaction spec" frame in Figma) */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-instant: 100ms;
+  --dur-press: 90ms;
+  --dur-fast: 150ms;
+  --dur-hover: 160ms;
+  --dur-base: 250ms;
+  --dur-card: 300ms;
+  --dur-slow: 450ms;
+  --dur-enter: 600ms;
+  --stagger: 80ms;
+  --rise: 16px;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #15131a;
+  --surface: #221f29;
+  --surface-alt: #2a2632;
+  --section-alt: #1b1822;
+  --text: #ede7f2;
+  --text-body: #c9c2d1;
+  --primary: #d0bcff;
+  --on-primary: #21005d;
+  --border: #342f3d;
+  --outline: #4a4454;
+  --chip: #352a4d;
+  --chip-text: #d0bcff;
+  --tint-lavender: #2d2540;
+  --tint-mint: #1e2e2a;
+  --tint-blue: #1c2a35;
+  --tape: #5a4c7a;
+  --step-eyebrow: #d9ccf7;
+  --nav-bg: rgb(21 19 26 / 0.85);
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.3), 0 8px 24px -4px rgb(0 0 0 / 0.35);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.35), 0 16px 36px -4px rgb(0 0 0 / 0.5);
+  --shadow-polaroid: 0 12px 28px -6px rgb(0 0 0 / 0.5);
+  --glow: 0 6px 20px rgb(208 188 255 / 0.28);
+}
+
+/* Responsive layout tokens */
+@media (max-width: 1279px) {
+  :root { --gutter: 64px; }
+}
+@media (max-width: 767px) {
+  :root { --gutter: 16px; }
+}

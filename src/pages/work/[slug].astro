@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseBlock from '../../components/CaseBlock.astro';
+import Footer from '../../components/Footer.astro';
+import { caseStudies, caseStudyBySlug } from '../../data/case-studies';
+import { projectBySlug } from '../../data/projects';
+import { href } from '../../lib/url';
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const cs = caseStudyBySlug(slug!)!;
+const next = projectBySlug(cs.next);
+const meta = [
+  ['Role', cs.meta.role],
+  ['Team', cs.meta.team],
+  ['Timeline', cs.meta.timeline],
+  ['Tools', cs.meta.tools],
+];
+---
+
+<Base title={`${cs.title} · Zoobia Saifullah`} description={cs.lede} active="case">
+  <article>
+    <header class={`hero tint-${cs.tint}`}>
+      <div class="container hero__inner">
+        <a class="link-btn back" href={href('/#work')}><span class="arrow" aria-hidden="true" style="transform:scaleX(-1)">→</span> All work</a>
+        <span class="eyebrow enter" style="--i:0">{cs.eyebrow}</span>
+        <h1 class="h1 enter" style="--i:1">{cs.title}</h1>
+        <p class="lead enter" style="--i:2">{cs.lede}</p>
+        <ul class="chip-row enter" style="--i:3" aria-label="Tags">
+          {cs.tags.map((t) => <li class="chip">{t}</li>)}
+        </ul>
+        <dl class="meta enter" style="--i:4">
+          {meta.map(([k, v]) => <div><dt class="label">{k}</dt><dd class="value">{v}</dd></div>)}
+        </dl>
+      </div>
+    </header>
+
+    {
+      cs.sections.map((s) => (
+        <section class="sec" aria-labelledby={`s-${s.number}`}>
+          <div class="container sec__inner">
+            <div class="sec__label" data-reveal>
+              <span class="eyebrow">{s.number}</span>
+              <h2 id={`s-${s.number}`} class="h3">{s.title}</h2>
+            </div>
+            <div class="sec__body" data-reveal>
+              {s.blocks.map((b) => <CaseBlock block={b} />)}
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="next" aria-labelledby="next-title">
+      <div class="container">
+        <a class={`next__card tint-${next.tint}`} href={href(`/work/${next.slug}/`)} data-reveal>
+          <span class="eyebrow">Next case study</span>
+          <h2 id="next-title" class="h3">{next.nextTitle}</h2>
+          <p>{next.nextSummary}</p>
+          <span class="link-btn">Read case study <span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+  </article>
+  <Footer />
+</Base>
+
+<style>
+  .tint-blue { background: var(--tint-blue); }
+  .tint-lavender { background: var(--tint-lavender); }
+  .tint-mint { background: var(--tint-mint); }
+
+  .hero { padding-top: 72px; }
+  .hero__inner { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-block: 48px 64px; max-width: calc(var(--page-max)); }
+  .hero__inner > .h1, .hero__inner > .lead { max-width: 880px; }
+  .back { margin-bottom: 8px; }
+  .back:hover .arrow, .back:focus-visible .arrow { transform: scaleX(-1) translateX(4px) !important; }
+  .meta { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 16px 48px; margin: 12px 0 0; }
+  .meta div { display: flex; flex-direction: column; gap: 2px; }
+  .meta dd { margin: 0; }
+
+  .sec { padding-block: 40px; }
+  .sec:first-of-type { padding-top: 72px; }
+  .sec__inner { display: grid; grid-template-columns: 256px minmax(0, 800px); gap: 64px; justify-content: start; }
+  .sec__label { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 96px; align-self: start; }
+  .sec__body { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+
+  .next { padding-block: 64px 96px; }
+  .next__card {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 48px; border-radius: var(--radius-card);
+    transition: box-shadow var(--dur-card) var(--ease-out-quint), transform var(--dur-card) var(--ease-out-quint);
+  }
+  .next__card h2 { max-width: 760px; }
+  .next__card p { max-width: 680px; }
+  .next__card:hover, .next__card:focus-visible { box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+  .next__card:hover .link-btn { color: var(--text); }
+  .next__card:hover .arrow { transform: translateX(4px); }
+
+  @media (max-width: 1023px) {
+    .sec__inner { grid-template-columns: 1fr; gap: 24px; }
+    .sec__label { position: static; }
+    .meta { grid-template-columns: repeat(2, auto); }
+  }
+  @media (max-width: 767px) {
+    .hero { padding-top: 64px; }
+    .hero__inner { padding-block: 24px 40px; }
+    .sec { padding-block: 28px; }
+    .sec:first-of-type { padding-top: 44px; }
+    .meta { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+    .next { padding-block: 40px 64px; }
+    .next__card { padding: 28px 20px; border-radius: 20px; }
+  }
+</style>

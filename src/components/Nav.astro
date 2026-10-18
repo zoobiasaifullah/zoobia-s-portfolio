@@ -1,0 +1,116 @@
+---
+import Icon from './Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { site, navLinks } from '../data/site';
+import { href } from '../lib/url';
+---
+
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="logo" href={href('/')} aria-label={`${site.name}, home`}>
+      <span class="logo__mark" aria-hidden="true">{site.initial}</span>
+      <span class="logo__name">{site.name}</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {
+        navLinks.map((l) => (
+          <a class="nav-link" href={href(l.href)} data-section={l.section}>
+            <span class="nav-link__label">{l.label}</span>
+            <span class="nav-link__underline" aria-hidden="true" />
+          </a>
+        ))
+      }
+      <a class="nav-link" href={site.links.resume} target="_blank" rel="noopener">
+        <span class="nav-link__label">Resume<Icon name="external" /></span>
+        <span class="nav-link__underline" aria-hidden="true" />
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </nav>
+
+    <div class="nav__actions">
+      <ThemeToggle />
+      <button class="icon-btn menu-btn" type="button" data-menu-open aria-label="Open menu" aria-haspopup="dialog">
+        <Icon name="menu" />
+      </button>
+    </div>
+  </div>
+
+  <dialog class="sheet" data-menu aria-label="Menu">
+    <div class="sheet__bar">
+      <span class="eyebrow eyebrow--muted">Menu</span>
+      <button class="icon-btn" type="button" data-menu-close aria-label="Close menu"><Icon name="close" /></button>
+    </div>
+    <nav class="sheet__links" aria-label="Mobile">
+      {navLinks.map((l) => <a href={href(l.href)} data-menu-link>{l.label}</a>)}
+      <a href={site.links.resume} target="_blank" rel="noopener" data-menu-link>
+        Resume<Icon name="external" /><span class="sr-only"> (opens in a new tab)</span>
+      </a>
+    </nav>
+  </dialog>
+</header>
+
+<style>
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50; height: 72px;
+    background: var(--nav-bg); border-bottom: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  }
+  .nav__inner {
+    max-width: var(--page-max); height: 100%; margin-inline: auto; padding-inline: var(--gutter);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .logo { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+  .logo__mark {
+    display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--primary); color: var(--on-primary); font-weight: 600; font-size: 16px; line-height: 24px;
+  }
+  .logo__name { font-weight: 600; font-size: 16px; line-height: 24px; color: var(--text); }
+  .nav__links { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+  .nav-link {
+    position: relative; display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 44px; padding: 11px 14px 7px; gap: 4px;
+  }
+  .nav-link__label {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 15px; line-height: 20px; font-weight: 500; color: var(--text);
+    transition: color var(--dur-hover) var(--ease-out-quint);
+  }
+  .nav-link__underline {
+    width: 100%; height: 2px; border-radius: 1px; background: var(--primary);
+    transform: scaleX(0); transform-origin: center; opacity: 0.9;
+    transition: transform var(--dur-hover) var(--ease-out-quint);
+  }
+  .nav-link:hover .nav-link__label, .nav-link:focus-visible .nav-link__label, .nav-link[aria-current='true'] .nav-link__label { color: var(--primary); }
+  .nav-link:hover .nav-link__underline, .nav-link:focus-visible .nav-link__underline, .nav-link[aria-current='true'] .nav-link__underline { transform: scaleX(0.6); }
+  .nav-link:hover .nav-link__underline, .nav-link:focus-visible .nav-link__underline { transform: scaleX(1); }
+  .nav__actions { display: flex; align-items: center; gap: 8px; }
+  .menu-btn { display: none; }
+
+  /* Sheet (native <dialog>: focus trap, Esc to close, inert page behind) */
+  .sheet {
+    position: fixed; inset: 0 0 auto 0; width: 100%; max-width: none; margin: 0; padding: 0; border: 0;
+    background: var(--surface); color: var(--text); border-radius: 0 0 var(--radius-card) var(--radius-card);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .sheet::backdrop { background: rgb(21 19 26 / 0.45); }
+  .sheet[open] { animation: sheet-in var(--dur-slow) var(--ease-out-quint); }
+  @keyframes sheet-in { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
+  .sheet__bar { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .sheet__links { display: flex; flex-direction: column; padding: 8px 16px 24px; }
+  .sheet__links a {
+    display: flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 4px;
+    font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -0.025em; color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .sheet__links a:last-child { border-bottom: 0; }
+  .sheet__links a:hover, .sheet__links a:focus-visible { color: var(--primary); }
+
+  @media (max-width: 839px) {
+    .nav { height: 64px; }
+    .nav__inner { padding-inline: 16px; }
+    .nav__links { display: none; }
+    .nav__actions { margin-left: auto; }
+    .menu-btn { display: inline-grid; }
+  }
+</style>

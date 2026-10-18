@@ -1,0 +1,89 @@
+---
+import Icon from './Icon.astro';
+import Polaroid from './Polaroid.astro';
+import { hero, site, about } from '../data/site';
+import { href } from '../lib/url';
+
+const me = about.polaroids.find((p) => p.id === 'me')!;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="orb orb--lavender" style="--i:0"></span>
+    <span class="orb orb--mint" style="--i:1"></span>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__intro">
+      <span class="chip chip--accent enter" style="--i:0">{hero.chip}</span>
+      <h1 id="hero-title" class="h1 enter" style="--i:1">{hero.headline}</h1>
+      <p class="lead enter" style="--i:2">{hero.intro}</p>
+
+      <div class="hero__actions enter" style="--i:3">
+        <div class="hero__cta">
+          <a class="btn btn-primary" href={href('/#work')}>View my work <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-secondary" href={site.links.resume} target="_blank" rel="noopener">
+            <span class="lg-only">View resume</span><span class="sm-only">Resume</span>
+            <span class="sr-only">(opens in a new tab)</span>
+          </a>
+        </div>
+        <span class="hero__divider" aria-hidden="true"></span>
+        <div class="hero__social">
+          <a class="icon-btn" href={`mailto:${site.email}`} aria-label="Email Zoobia"><Icon name="email" /></a>
+          <a class="icon-btn" href={site.links.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><Icon name="linkedin" /></a>
+          <a class="icon-btn" href={site.links.github} target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><Icon name="github" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__portrait">
+      <Polaroid caption={me.caption} image={me.image} alt={me.alt} size="hero" rot={3} class="hero__polaroid" priority />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; overflow: clip; padding-top: 72px; }
+  .hero__bg { position: absolute; inset: 0; max-width: var(--page-max); margin-inline: auto; pointer-events: none; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(120px); animation: bloom 600ms var(--ease-out-quint) both; animation-delay: calc(var(--i) * 70ms); }
+  .orb--lavender { width: 560px; height: 560px; left: -120px; top: -220px; background: var(--tint-lavender); }
+  .orb--mint { width: 420px; height: 420px; left: 1010px; top: 0; background: var(--tint-mint); }
+
+  .hero__inner {
+    position: relative; max-width: var(--page-max); margin-inline: auto; padding: 64px var(--gutter) 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 64px;
+  }
+  .hero__intro { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 640px; flex: 1 1 640px; }
+  .hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 8px; }
+  .hero__cta { display: flex; gap: 12px; }
+  .hero__divider { width: 1px; height: 28px; background: var(--outline); }
+  .hero__social { display: flex; gap: 12px; }
+  .sm-only { display: none; }
+
+  .hero__portrait { position: relative; flex: none; width: 416px; height: 440px; }
+  .hero__portrait :global(.hero__polaroid) { position: absolute; left: 76px; top: 20px; }
+  .hero__portrait :global(.polaroid) { animation: drop-in 700ms var(--ease-out-quint) 280ms both; --rot-from: 6deg; }
+
+  @media (max-width: 1023px) {
+    .hero__inner { flex-direction: column; align-items: flex-start; gap: 40px; }
+    .hero__portrait { align-self: center; }
+  }
+  @media (max-width: 767px) {
+    .hero { padding-top: 64px; }
+    .orb--lavender { width: 360px; height: 360px; left: -100px; top: -120px; }
+    .orb--mint { width: 300px; height: 300px; left: auto; right: -140px; top: 120px; }
+    .hero__inner { padding: 32px 16px 40px; gap: 24px; }
+    .hero__intro { gap: 24px; }
+    .hero__portrait { display: none; }
+    .hero__actions { width: 100%; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero__cta { width: 100%; }
+    .hero__cta .btn { flex: 1; padding-inline: 16px; }
+    .hero__divider { display: none; }
+    .lg-only { display: none; }
+    .sm-only { display: inline; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orb, .hero__portrait :global(.polaroid) { animation: none; }
+    .hero__portrait :global(.polaroid) { transform: rotate(var(--rot)); }
+  }
+</style>

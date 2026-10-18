@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import { contact, site } from '../data/site';
+---
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__card" data-reveal>
+      <div class="contact__text">
+        <span class="hand contact__hand" aria-hidden="true">{contact.handwritten}</span>
+        <h2 id="contact-title" class="h2">{contact.title}</h2>
+        <p class="lead">{contact.body}</p>
+      </div>
+      <div class="contact__actions">
+        <a class="btn contact__btn" href={`mailto:${site.email}`}>
+          <Icon name="email" /> {site.email}
+        </a>
+        <div class="contact__social">
+          <a class="icon-btn on-dark" href={site.links.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><Icon name="linkedin" /></a>
+          <a class="icon-btn on-dark" href={site.links.github} target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><Icon name="github" /></a>
+          <a class="icon-btn on-dark" href={site.links.x} target="_blank" rel="noopener" aria-label="X (opens in a new tab)"><Icon name="x" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact { padding-bottom: 96px; }
+  .contact__card {
+    display: flex; align-items: center; justify-content: space-between; gap: 48px; padding: 56px;
+    background: var(--primary); color: var(--on-primary); border-radius: var(--radius-card);
+  }
+  .contact__text { display: flex; flex-direction: column; gap: 12px; max-width: 560px; }
+  .contact__text .h2, .contact__text .lead { color: var(--on-primary); }
+  .contact__hand { font-size: 28px; line-height: 32px; opacity: 0.9; }
+  .contact__actions { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .contact__btn { background: var(--on-primary); color: var(--primary); }
+  .contact__btn:hover, .contact__btn:focus-visible { box-shadow: 0 6px 20px rgb(0 0 0 / 0.25); }
+  .contact__btn:focus-visible, .on-dark:focus-visible { outline-color: var(--on-primary); }
+  .contact__social { display: flex; gap: 12px; }
+  .on-dark { background: transparent; border-color: color-mix(in srgb, var(--on-primary) 45%, transparent); color: var(--on-primary); }
+  .on-dark:hover, .on-dark:focus-visible { background: color-mix(in srgb, var(--on-primary) 16%, transparent); border-color: var(--on-primary); color: var(--on-primary); }
+
+  @media (max-width: 1023px) { .contact__card { flex-direction: column; align-items: flex-start; padding: 40px; gap: 32px; } }
+  @media (max-width: 767px) {
+    .contact { padding-bottom: 64px; }
+    .contact__card { padding: 28px 20px; border-radius: 20px; }
+    .contact__btn { white-space: normal; word-break: break-all; }
+  }
+</style>
