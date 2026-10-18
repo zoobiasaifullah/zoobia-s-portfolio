@@ -14,7 +14,7 @@ export type Block =
   | { t: 'stats'; items: { value: string; label: string }[] }
   | { t: 'table'; head: [string, string]; rows: { found: string; foundText: string; change: string }[] }
   | { t: 'quote'; text: string; attribution: string; draft?: boolean }
-  | { t: 'figure'; image?: string; alt: string; caption?: string; tint?: Tint }
+  | { t: 'figure'; image?: string; video?: string; alt: string; caption?: string; tint?: Tint }
   | { t: 'lists'; items: { title: string; bullets: string[] }[] }
   | { t: 'themes'; items: { title: string; note: string }[] }
   | { t: 'matrix'; quadrants: { ideas: { text: string; shipped?: boolean }[] }[]; caption: string }
