@@ -16,3 +16,19 @@ for (const [path, mod] of Object.entries(files)) {
 export function findImage(name?: string): ImageMetadata | undefined {
   return name ? byName.get(name) : undefined;
 }
+
+// Videos in src/assets/images (mp4/webm) are copied to the build as-is and referenced by file name without the extension.
+const videoFiles = import.meta.glob<string>('/src/assets/images/**/*.{mp4,webm}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const videoByName = new Map<string, string>();
+for (const [path, url] of Object.entries(videoFiles)) {
+  videoByName.set(path.split('/').pop()!.replace(/\.[^.]+$/, ''), url);
+}
+
+export function findVideo(name?: string): string | undefined {
+  return name ? videoByName.get(name) : undefined;
+}
