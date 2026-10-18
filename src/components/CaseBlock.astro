@@ -1,5 +1,6 @@
 ---
 import Media from './Media.astro';
+import { findVideo } from '../lib/assets';
 import Walkthrough from './Walkthrough.astro';
 import type { Block } from '../data/types';
 
@@ -122,7 +123,13 @@ const showDrafts = import.meta.env.DEV;
 {
   b.t === 'figure' && (
     <figure class:list={['cb-figure', b.tint ? `tint-${b.tint}` : '']}>
-      <div class="cb-figure__frame"><Media name={b.image} alt={b.alt} widths={[640, 1000, 1600]} sizes="(min-width: 1280px) 800px, 90vw" fit="contain" /></div>
+      <div class="cb-figure__frame">
+        {b.video && findVideo(b.video) ? (
+          <video class="cb-video" src={findVideo(b.video)} aria-label={b.alt} muted loop playsinline controls preload="metadata" data-autoplay />
+        ) : (
+          <Media name={b.image} alt={b.alt} widths={[640, 1000, 1600]} sizes="(min-width: 1280px) 800px, 90vw" fit="contain" />
+        )}
+      </div>
       {b.caption && <figcaption class="small">{b.caption}</figcaption>}
     </figure>
   )
@@ -182,7 +189,17 @@ const showDrafts = import.meta.env.DEV;
 
 {b.t === 'walkthrough' && <Walkthrough />}
 
+<script>
+  // Play muted videos only while visible, and never autoplay for people who prefer reduced motion.
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLVideoElement>('video[data-autoplay]').forEach((v) => {
+    if (reduce) return;
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.4 }).observe(v);
+  });
+</script>
+
 <style>
+  .cb-video { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; }
   .cb-p { max-width: 720px; }
   .cb-statement { font-size: 22px; line-height: 32px; font-weight: 600; letter-spacing: -0.025em; color: var(--text); max-width: 760px; }
   .cb-h3 { margin-top: 8px; }
