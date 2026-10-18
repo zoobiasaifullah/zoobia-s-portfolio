@@ -10,7 +10,7 @@ export const lyra: CaseStudy = {
   meta: {
     role: 'UX Design Team Lead',
     team: '4 students',
-    timeline: '6 weeks',
+    timeline: '4 weeks',
     tools: 'Figma, FigJam, Photoshop, Trello',
   },
   next: 'bucketize',
@@ -56,15 +56,12 @@ export const lyra: CaseStudy = {
           ],
         },
         { t: 'h3', text: 'What participants said' },
-        // Placeholder in the design file. Hidden in production builds until you replace the text.
+        // TODO: replace this placeholder with the real quote. It is visible on purpose so it is not forgotten.
         {
           t: 'quote',
-          draft: true,
           text: 'Swap in: the real quote, on asking questions to build understanding',
           attribution: 'Professor interview',
         },
-        // TODO: link to your FigJam / Miro research board
-        { t: 'link', text: 'Open the research board →', href: '#' },
       ],
     },
     {
@@ -167,10 +164,10 @@ export const lyra: CaseStudy = {
         {
           t: 'stats',
           items: [
-            { value: '78%', label: 'rated account setup highly intuitive (5/5)' },
-            { value: '82%', label: 'successfully reviewed learned concepts' },
-            { value: '100%', label: 'found the mind maps useful for review' },
-            { value: '100%', label: 'broke down answers using a prompted chat mode' },
+            { value: '+48%', label: 'task success in usability testing' },
+            { value: '2x', label: 'perceived usefulness' },
+            { value: '60+', label: 'users in surveys, interviews and task analysis' },
+            { value: '4 weeks', label: 'from research to a tested prototype' },
           ],
         },
       ],
