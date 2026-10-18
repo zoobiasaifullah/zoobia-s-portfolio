@@ -11,7 +11,7 @@ export const site = {
   copyright: '© 2026 Zoobia Saifullah · zs295@njit.edu',
   links: {
     github: 'https://github.com/zoobiasaifullah',
-    linkedin: '#', // TODO: your LinkedIn URL
+    linkedin: 'https://www.linkedin.com/in/zoobia-saifullah-syeda/', // TODO: your LinkedIn URL
     x: '#', // TODO: your X URL (or delete the X button in ContactCard.astro)
     resume: '#', // TODO: path to your PDF in /public (for example '/zoobia-saifullah-resume.pdf')
     paper: '#', // TODO: ACM link to "Like, Comment & Caption"
