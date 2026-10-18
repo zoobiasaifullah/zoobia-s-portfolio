@@ -117,7 +117,7 @@ export const bucketize: CaseStudy = {
         },
         {
           t: 'figure',
-          image: 'bucketize-prototype',
+          video: 'bucketize-prototype',
           alt: 'Scanning index cards on mobile and turning them into organized buckets',
           caption: 'Scanning index cards on mobile and turning them into organized buckets.',
           tint: 'mint',
