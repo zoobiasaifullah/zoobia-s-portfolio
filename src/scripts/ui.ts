@@ -10,14 +10,29 @@ function syncToggle() {
     b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   });
 }
-document.querySelectorAll('[data-theme-toggle]').forEach((b) =>
+const viewTransitionDocument = document as Document & {
+  startViewTransition?: (updateCallback: () => void) => unknown;
+};
+
+document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((b) => {
+  b.addEventListener('animationend', () => b.classList.remove('is-switching'));
   b.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch { /* storage unavailable */ }
-    syncToggle();
-  }),
-);
+    const switchTheme = () => {
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch { /* storage unavailable */ }
+      syncToggle();
+    };
+
+    b.classList.remove('is-switching');
+    void b.offsetWidth;
+    b.classList.add('is-switching');
+    if (viewTransitionDocument.startViewTransition && !reduceMotion()) {
+      viewTransitionDocument.startViewTransition(switchTheme);
+    }
+    else switchTheme();
+  });
+});
 syncToggle();
 
 /* ---------- Mobile menu (native <dialog>) ---------- */

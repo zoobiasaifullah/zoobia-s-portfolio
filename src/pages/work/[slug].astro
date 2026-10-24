@@ -95,9 +95,14 @@ const meta = [
   }
   .next__card h2 { max-width: 760px; }
   .next__card p { max-width: 680px; }
-  .next__card:hover, .next__card:focus-visible { box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+  .next__card:hover, .next__card:focus-visible { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
   .next__card:hover .link-btn { color: var(--text); }
   .next__card:hover .arrow { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .next__card:hover, .next__card:focus-visible { transform: none; box-shadow: var(--shadow-card); }
+    .next__card:hover .arrow { transform: none; }
+  }
 
   @media (max-width: 1023px) {
     .sec__inner { grid-template-columns: 1fr; gap: 24px; }

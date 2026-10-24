@@ -13,7 +13,7 @@ export const bucketize: CaseStudy = {
     timeline: '3 weeks',
     tools: 'Figma, FigJam, Miro, Google Workspace',
   },
-  next: 'k2-practice-games',
+  next: 'lyra',
   sections: [
     {
       number: '01',

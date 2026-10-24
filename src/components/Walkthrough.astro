@@ -58,9 +58,10 @@ import { lyraWalkthrough as steps } from '../data/case-studies/lyra-walkthrough'
 <style>
   .walk { display: flex; flex-direction: column; gap: 16px; padding: 16px; background: var(--tint-lavender); border-radius: var(--radius-tile); }
   .walk__stage { background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); }
-  .walk__panel { display: flex; align-items: center; gap: 40px; padding: 32px; animation: rise-in var(--dur-slow) var(--ease-out-quint) both; }
+  .walk__panel { display: flex; align-items: center; gap: 40px; padding: 32px; animation: rise-in var(--dur-slow) var(--ease-out-quint) both; will-change: opacity, transform; }
   .walk__panel[hidden] { display: none; }
   .walk__screen { flex: none; width: 200px; aspect-ratio: 9 / 19; overflow: hidden; border-radius: 20px; border: 1px solid var(--border); background: var(--surface-alt); box-shadow: var(--shadow-card); }
+  .walk__screen :global(.media) { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .walk__copy { display: flex; flex-direction: column; gap: 8px; }
   .walk__tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
   .walk__tab {
@@ -73,6 +74,11 @@ import { lyraWalkthrough as steps } from '../data/case-studies/lyra-walkthrough'
   .walk__tab[aria-selected='true'] { background: var(--surface); color: var(--text); border-color: var(--border); box-shadow: var(--shadow-card); }
   .walk__num { display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 50%; background: var(--chip); color: var(--chip-text); font-size: 12px; font-weight: 600; }
   .walk__tab[aria-selected='true'] .walk__num { background: var(--primary); color: var(--on-primary); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .walk__panel { animation: none; }
+    .walk__tab { transition: none; }
+  }
 
   @media (max-width: 767px) {
     .walk { padding: 12px; }

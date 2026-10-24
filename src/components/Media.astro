@@ -27,7 +27,7 @@ const img = findImage(name);
       decoding="async"
       format="webp"
       quality={82}
-      class:list={['media', cls]}
+      class:list={['media', `media--${fit}`, cls]}
       style={`object-fit:${fit};object-position:${position}`}
     />
   ) : (
@@ -38,9 +38,17 @@ const img = findImage(name);
 }
 
 <style>
-  .media { width: 100%; height: 100%; }
+  .media {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    max-inline-size: 100%;
+  }
+  .media--cover { background: var(--surface-alt); }
+  .media--contain { background: transparent; }
   .media--missing {
     display: grid; place-items: center;
+    width: 100%; height: 100%;
     background: repeating-linear-gradient(135deg, var(--surface-alt) 0 12px, var(--section-alt) 12px 24px);
     color: var(--text-body); font-size: 12px; line-height: 16px; text-align: center; padding: 8px;
   }

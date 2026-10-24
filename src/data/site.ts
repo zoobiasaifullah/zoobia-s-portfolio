@@ -89,13 +89,14 @@ export const experience = {
       org: 'New Jersey Institute of Technology',
       dates: 'Jun – Apr 2026',
       description:
-        'Co-authored a CHI 2026 paper (Honorable Mention, top 5%) on caption accessibility and synthesized 900+ data points through thematic analysis.',
+        'Co-authored research on caption accessibility, using systematic review and thematic analysis to identify barriers and opportunities for more inclusive social media experiences.',
     },
     {
       role: 'UX Design Tutor',
       org: 'Norma J. Clayton Learning Center, NJIT',
       dates: 'Oct 2024 – May 2026',
-      description: 'Led 20+ UX heuristic evaluations and coached 10+ students on usability, WCAG and rapid prototyping.',
+      description:
+        'Supported students through UX heuristic evaluations and coached them on usability, accessibility and rapid prototyping.',
     },
   ],
   earlier: [

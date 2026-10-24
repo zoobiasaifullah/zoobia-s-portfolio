@@ -3,24 +3,6 @@ import type { Project } from './types';
 // Homepage cards + "Next case study" blocks. Order = order on the page.
 export const projects: Project[] = [
   {
-    slug: 'k2-practice-games',
-    title: 'K-2 Practice Games',
-    summary:
-      'A post-release study with K–2 teachers on how classroom practice games fit into the school day, and how to design them for social relationship development.',
-    tags: [
-      { label: 'UX research · EdTech', variant: 'accent' },
-      { label: 'Amplify · Summer 2026', variant: 'plain' },
-    ],
-    role: 'UX Research Intern',
-    team: 'Mentored by a Senior UX Researcher',
-    timeline: '4 weeks',
-    tint: 'blue',
-    thumb: { kind: 'browser', image: 'amplify-thumbnail-goblin', alt: 'Practice game screen with a goblin character and letter tiles' },
-    nextTitle: 'K-2 Practice Games: designing for connection in early learning',
-    nextSummary:
-      'A post-release UX research study with K–2 teachers on how practice games can fit more naturally into the school day.',
-  },
-  {
     slug: 'lyra',
     title: 'Lyra',
     summary:

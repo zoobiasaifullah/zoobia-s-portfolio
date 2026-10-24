@@ -199,7 +199,7 @@ const showDrafts = import.meta.env.DEV;
 </script>
 
 <style>
-  .cb-video { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; }
+  .cb-video { display: block; width: 100%; max-width: 100%; height: auto; max-height: 640px; object-fit: contain; object-position: center; }
   .cb-p { max-width: 720px; }
   .cb-statement { font-size: 22px; line-height: 32px; font-weight: 600; letter-spacing: -0.025em; color: var(--text); max-width: 760px; }
   .cb-h3 { margin-top: 8px; }
@@ -244,6 +244,7 @@ const showDrafts = import.meta.env.DEV;
 
   .cb-figure { display: flex; flex-direction: column; gap: 8px; }
   .cb-figure__frame { border-radius: var(--radius-tile); overflow: hidden; border: 1px solid var(--border); background: var(--section-alt); min-height: 240px; }
+  .cb-figure__frame :global(.media) { width: 100%; max-width: 100%; height: auto; object-fit: contain; object-position: center; }
   .cb-figure figcaption { color: var(--text-body); }
   .tint-blue .cb-figure__frame { background: var(--tint-blue); }
   .tint-lavender .cb-figure__frame { background: var(--tint-lavender); }

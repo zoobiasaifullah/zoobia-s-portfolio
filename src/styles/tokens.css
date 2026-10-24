@@ -88,26 +88,26 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #15131a;
-  --surface: #221f29;
-  --surface-alt: #2a2632;
-  --section-alt: #1b1822;
-  --text: #ede7f2;
-  --text-body: #c9c2d1;
+  --bg: #121016;
+  --surface: #272230;
+  --surface-alt: #312b3b;
+  --section-alt: #1d1926;
+  --text: #f4eff8;
+  --text-body: #d0c8d9;
   --primary: #d0bcff;
   --on-primary: #21005d;
-  --border: #342f3d;
-  --outline: #4a4454;
-  --chip: #352a4d;
+  --border: #463d53;
+  --outline: #756a82;
+  --chip: #42335f;
   --chip-text: #d0bcff;
   --tint-lavender: #2d2540;
   --tint-mint: #1e2e2a;
   --tint-blue: #1c2a35;
   --tape: #5a4c7a;
   --step-eyebrow: #d9ccf7;
-  --nav-bg: rgb(21 19 26 / 0.85);
-  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.3), 0 8px 24px -4px rgb(0 0 0 / 0.35);
-  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.35), 0 16px 36px -4px rgb(0 0 0 / 0.5);
+  --nav-bg: rgb(18 16 22 / 0.92);
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.35), 0 8px 24px -4px rgb(0 0 0 / 0.45);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.4), 0 16px 36px -4px rgb(0 0 0 / 0.6);
   --shadow-polaroid: 0 12px 28px -6px rgb(0 0 0 / 0.5);
   --glow: 0 6px 20px rgb(208 188 255 / 0.28);
 }

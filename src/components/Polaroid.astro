@@ -31,6 +31,7 @@ const { caption, image, alt, size = 'collage', rot = 0, class: cls = '', style =
   .polaroid--hero { --w: 330px; }
   .polaroid--small { --w: 164px; }
   .polaroid__photo { overflow: hidden; border-radius: 2px; aspect-ratio: 220 / 200; background: var(--section-alt); }
+  .polaroid__photo :global(.media) { width: 100%; height: 100%; object-fit: cover; object-position: center; }
   .polaroid--hero .polaroid__photo { aspect-ratio: 302 / 324; }
   .polaroid--small .polaroid__photo { aspect-ratio: 136 / 150; }
   .polaroid figcaption { text-align: center; color: var(--text-body); }
