@@ -21,11 +21,11 @@ export const lyra: CaseStudy = {
       blocks: [
         {
           t: 'statement',
-          text: 'Students did not need another tool that could produce an answer. They needed a reason to slow down before accepting one.',
+          text: 'Students were getting answers faster than they could understand them.',
         },
         {
           t: 'p',
-          text: 'Students were already using AI to get through difficult assignments. The problem was not simply that they used it; it was that an immediate answer could hide whether they understood the work. Professors saw the consequences when students submitted polished responses but struggled to explain them without AI.',
+          text: 'Students were already using AI to get through difficult assignments. An immediate answer could hide whether they understood the work. Professors saw the consequences when students submitted polished responses but struggled to explain them without AI.',
         },
         { t: 'callout', label: 'How might we', text: 'How might we design an AI tool that supports learning without taking over the thinking?' },
       ],
@@ -36,14 +36,14 @@ export const lyra: CaseStudy = {
       blocks: [
         {
           t: 'statement',
-          text: 'The research showed a gap between what students wanted from AI and what learning required from them.',
+          text: 'Students wanted speed. Learning needed friction.',
         },
         {
           t: 'stats',
           items: [
-            { value: '60+', label: 'students surveyed about AI use and learning pain points' },
+            { value: '[N]', label: 'students surveyed about AI use and learning pain points' },
             { value: '82%', label: 'use AI primarily for speed and efficiency' },
-            { value: '3.6%', label: 'use AI intentionally to deepen understanding' },
+            { value: '[X] of [N]', label: 'students said they use AI to deepen understanding' },
           ],
         },
         { t: 'h3', text: 'How I investigated the problem' },
@@ -51,9 +51,9 @@ export const lyra: CaseStudy = {
           t: 'steps',
           cols: 3,
           items: [
-            { title: 'Literature review', text: 'I reviewed AI education tools such as Khanmigo and Duolingo AI tutors to understand how they addressed learning, confirmation bias and automation bias.' },
-            { title: 'Student survey', text: 'I surveyed 60+ students about when they use AI, what they use it for and whether they feel confident explaining work they completed with its help.' },
-            { title: 'Professor interviews', text: 'I spoke with professors about the changes they were seeing in students’ questions, submitted work and willingness to work through uncertainty.' },
+            { title: 'Literature review', text: 'I reviewed AI education tools such as Khanmigo and Duolingo AI tutors to understand how they addressed learning, confirmation bias, automation bias and prompting.' },
+            { title: 'Student survey', text: 'I surveyed [N] students about why they turn to AI and whether they feel confident explaining work they completed with its help.' },
+            { title: 'Professor interviews', text: 'I spoke with professors about changes they were seeing in students’ questions and submitted work, along with students’ willingness to work through uncertainty.' },
           ],
         },
         { t: 'h3', text: 'The patterns that emerged' },
@@ -63,18 +63,20 @@ export const lyra: CaseStudy = {
             { title: 'Speed came first', note: 'Students often used AI to finish work efficiently, even when they were not sure they understood the result.' },
             { title: 'AI hid the struggle', note: 'When AI supplied the next step, students lost the productive struggle that could have helped them learn.' },
             { title: 'The feedback loop broke', note: 'AI-generated work made it harder for professors to tell what a student understood and where they needed help.' },
-            { title: 'AI was a symptom, too', note: 'Some students may have been turning to AI because assignments felt difficult, motivation was low or asking for help felt uncomfortable.' },
+            { title: 'A question we kept coming back to', note: 'We suspected some students turned to AI because assignments felt difficult or asking for help felt uncomfortable.' },
+            { title: 'Some felt guilty', note: "Some students said they felt guilty submitting AI work they did not fully understand." },
+            { title: "AI wasn't even reliable", note: 'Students also complained about inaccurate answers and not knowing how to prompt well.' },
           ],
         },
         { t: 'h3', text: 'What participants said' },
         {
           t: 'quote',
-          text: "Students don't think AI is a collaboration tool — they think of it as a do-my-homework tool.",
+          text: "Students don't think AI is a collaboration tool, they think of it as a do-my-homework tool.",
           attribution: 'Professor interview',
         },
         {
           t: 'quote',
-          text: 'I ask questions, then follow up with more questions — that’s how students start thinking. AI skips that process.',
+          text: 'I ask questions, then follow up with more questions. That’s how students start thinking. AI skips that process.',
           attribution: 'Professor interview',
         },
       ],
@@ -100,7 +102,7 @@ export const lyra: CaseStudy = {
         { t: 'h3', text: 'Prioritizing what to build' },
         {
           t: 'p',
-          text: 'We grouped ideas by whether they encouraged learning, supported review or discouraged shortcuts. An impact-effort matrix helped us choose what to build first and keep the scope realistic.',
+          text: 'We grouped ideas by whether they encouraged learning, supported review, prompted reflection or discouraged shortcuts. An impact-effort matrix helped us choose what to build first and keep the scope realistic.',
         },
         {
           t: 'matrix',
@@ -116,13 +118,28 @@ export const lyra: CaseStudy = {
             },
             { ideas: [{ text: 'Mind map stays in sync with the chat', shipped: true }, { text: 'Swap one chat topic for maths or code' }] },
             { ideas: [{ text: 'Clear titles for every screen' }, { text: 'Scrollable chats' }, { text: 'Back button between modes' }] },
-            { ideas: [{ text: 'Curvy display type' }, { text: 'Assets tidied into frames' }] },
+            { ideas: [{ text: '[low-impact idea]' }] },
           ],
-          caption: 'Highlighted ideas shipped in the prototype',
+          caption: 'Ideas prioritized for the prototype',
         },
         {
           t: 'p',
-          text: 'We prioritized adaptive chat modes, guiding responses and a confidence check at the end of a session. We also made one larger bet: connecting the mind map directly to the conversation instead of treating it as a separate feature.',
+          text: 'We prioritized adaptive chat modes, guiding responses, confidence checks and clearer links between the chat and mind map. We also made one larger bet: connecting the mind map directly to the conversation instead of treating it as a separate feature.',
+        },
+        { t: 'h3', text: 'What Lyra does' },
+        {
+          t: 'lists',
+          items: [
+            {
+              title: 'Four chat modes',
+              bullets: [
+                'Creative: asks open-ended questions to explore new ideas.',
+                'Analytical: helps break a problem into smaller parts.',
+                'Reflective: prompts students to look back at their work and spot gaps.',
+                'Critical: pushes students to look at a topic from other perspectives.',
+              ],
+            },
+          ],
         },
       ],
     },
@@ -136,17 +153,25 @@ export const lyra: CaseStudy = {
         },
         {
           t: 'p',
-          text: 'We mapped the journey from onboarding through each chat mode and into the mind map. Wireframes established the basic layout, and paper prototypes let us test the core interaction before we committed to a visual direction. Once the flow held together, we moved into a digital prototype and refined the moments where users needed more context or feedback.',
+          text: 'We mapped the flow from onboarding through each chat mode and into the mind map. Wireframes established the basic layout, and paper prototypes let us test the core interaction before we committed to a visual direction. Once the flow held together, we moved into a digital prototype and refined the moments where users needed more context or feedback.',
         },
         {
           t: 'steps',
           cols: 2,
           items: [
-            { title: '1. Map the flow', text: 'We defined the decision points from onboarding and the learning-style quiz through the chat modes and mind map.' },
-            { title: '2. Wireframe', text: 'We established the layout and interaction patterns before spending time on visual polish.' },
-            { title: '3. Paper prototype', text: 'We tested the core concepts with diverse users and checked whether the interaction made sense without a finished interface.' },
-            { title: '4. Build the digital prototype', text: 'We brought the strongest ideas into Figma, then iterated on transitions, navigation, feedback and reflection prompts.' },
+            { title: 'Map the flow', text: 'We defined the decision points from onboarding and the learning-style quiz through the chat modes and mind map.' },
+            { title: 'Wireframe', text: 'We established the layout and interaction patterns before spending time on visual polish.' },
+            { title: 'Paper prototype', text: 'We tested the core concepts with [N] students and checked whether the interaction made sense without a finished interface.' },
+            { title: 'Build the digital prototype', text: 'We brought the strongest ideas into Figma, then iterated on transitions, navigation, feedback and reflection prompts.' },
           ],
+        },
+        {
+          t: 'p',
+          text: '[One moment from paper testing that changed the design]',
+        },
+        {
+          t: 'p',
+          text: 'Midway through, we pivoted from [original direction] to [new direction] because [reason].',
         },
         {
           t: 'lists',
@@ -175,8 +200,9 @@ export const lyra: CaseStudy = {
       blocks: [
         {
           t: 'statement',
-          text: 'Testing did not change the premise. It showed us where the premise was getting lost in the interface.',
+          text: 'Testing confirmed the idea and showed where the interface got in the way.',
         },
+        { t: 'p', text: 'We tested the digital prototype with [N] students.' },
         {
           t: 'table',
           head: ['What testing showed', 'What we changed'],
@@ -184,12 +210,12 @@ export const lyra: CaseStudy = {
             {
               found: 'Onboarding was intuitive',
               foundText: 'Participants could navigate onboarding and complete the learning-style quiz without much help.',
-              change: 'We streamlined the assessment and filled in missing steps so the flow stayed focused.',
+              change: 'We kept the flow and shortened the learning-style quiz to [N] questions.',
             },
             {
               found: 'Mode transitions needed feedback',
               foundText: 'Participants understood the chat modes, but transitions and feedback did not always make the current state clear.',
-              change: 'We added visual indicators, clearer navigation and smoother transitions.',
+              change: 'We added visual indicators, clearer navigation, animations and micro-interactions.',
             },
             {
               found: 'Mind maps needed a stronger connection',
@@ -199,8 +225,18 @@ export const lyra: CaseStudy = {
             {
               found: 'Reflection prompts worked',
               foundText: 'Users responded well to interactions that asked them to analyze and reflect.',
-              change: 'We added confidence checks, animations and micro-interactions to reinforce self-assessment.',
+              change: 'We added a confidence check at the end of each session so reflection happened every time, not only when students chose a reflective mode.',
             },
+          ],
+        },
+        { t: 'h3', text: 'Results' },
+        {
+          t: 'stats',
+          items: [
+            { value: '[X] of [N]', label: 'rated account setup 5/5 for ease of use' },
+            { value: '[X] of [N]', label: 'successfully reviewed concepts they learned in Lyra' },
+            { value: '[N] of [N]', label: 'found the mind maps useful for review' },
+            { value: '[N] of [N]', label: 'could break down an answer using the prompted chat mode' },
           ],
         },
       ],
@@ -211,21 +247,21 @@ export const lyra: CaseStudy = {
       blocks: [
         {
           t: 'statement',
-          text: 'The most important insight was not that students used AI. It was that AI could make understanding look complete before it actually was.',
+          text: 'AI can make understanding look finished before it is.',
         },
         {
           t: 'quote',
-          text: "The hardest part wasn't designing Lyra. It was choosing to build something students hadn't asked for, because what they wanted in the moment wasn't what was going to help them.",
+          text: "The hardest call was building something students hadn't asked for, because what they wanted in the moment wasn't what would help them learn.",
           attribution: 'What Lyra taught me',
         },
         {
           t: 'p',
-          text: "That gap shaped Lyra’s central interaction: ask students to make their thinking visible before the system helps them move forward. I left the project more skeptical of answers that arrive too easily. In future work, I want to test not only whether someone can complete a task, but whether the experience helped them understand what they were doing.",
+          text: "Students said they understood AI-generated answers, while professors watched those same students struggle to explain them in class. Familiarity can feel like understanding, creating an illusion of knowing. That gap shaped Lyra’s central interaction: ask students to make their thinking visible before the system helps them move forward.",
         },
         { t: 'h3', text: 'Challenges' },
         {
           t: 'p',
-          text: 'The project moved quickly, so we had to make decisions with limited time for deep interviews. We balanced the survey and literature findings with professor perspectives, then used paper prototypes to test the most important interaction before building it out. Connecting the chat modes and mind map took several iterations because both features had to support the same learning process.',
+          text: 'We pivoted from [original direction] to [new direction] under a tight deadline, then used paper prototypes to test the most important interaction before building it out.',
         },
       ],
     },
