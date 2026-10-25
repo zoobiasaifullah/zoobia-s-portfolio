@@ -2,12 +2,13 @@
 ---
 
 <section class="rs-section" aria-labelledby="rs-title">
-  <header class="rs-rail">
+  <div class="container rs-inner">
+  <header class="rs-rail" data-reveal>
     <p class="rs-num">02</p>
     <h2 id="rs-title" class="rs-title">Research approach</h2>
   </header>
 
-  <div class="rs-body">
+  <div class="rs-body" data-reveal style="--i:1">
     <div class="rs-group">
       <p class="rs-p">We needed both sides of the problem: how students actually use AI, and what their professors notice once those students have to work without it. So we ran three strands of research, each answering a different question.</p>
 
@@ -70,20 +71,23 @@
       <li><a href="https://doi.org/10.1016/j.lindif.2023.102274">Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education</a></li>
     </ol>
   </div>
+  </div>
 </section>
 
 <style>
   .rs-section {
-    max-width: 1120px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px 64px;
-    align-items: flex-start;
+    padding-block: 40px;
+  }
+  .rs-inner {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 700px);
+    gap: 64px;
+    justify-content: start;
+    align-items: start;
     font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
     color: var(--text-body, #49454f);
   }
-  .rs-rail { flex: 1 1 220px; max-width: 260px; }
+  .rs-rail { position: sticky; top: 96px; }
   .rs-num { margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--primary, #6750a4); }
   .rs-title { margin: 0; font-size: 32px; line-height: 1.2; font-weight: 600; color: var(--text, #1c1b1f); }
   .rs-body { flex: 999 1 560px; min-width: 0; max-width: 700px; display: flex; flex-direction: column; gap: 48px; }
@@ -112,9 +116,13 @@
   .rs-refs { margin: 0; padding: 16px 0 0 18px; border-top: 1px solid var(--border, #e7e0ec); font-size: 12px; line-height: 1.7; }
   .rs-refs a { color: inherit; }
 
+  @media (max-width: 1023px) {
+    .rs-inner { grid-template-columns: 1fr; gap: 24px; }
+    .rs-rail { position: static; }
+  }
   @media (max-width: 767px) {
-    .rs-section { gap: 28px; }
-    .rs-body { flex-basis: 100%; gap: 36px; }
+    .rs-section { padding-block: 28px; }
+    .rs-body { gap: 36px; }
     .rs-title { font-size: 28px; }
     .rs-p { font-size: 16px; }
     .rs-method dt { flex-basis: 100%; }
