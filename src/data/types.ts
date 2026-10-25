@@ -7,7 +7,7 @@ export type Block =
   | { t: 'callout'; label: string; text: string }
   | { t: 'note'; text: string } // small outlined chip, e.g. confidentiality
   | { t: 'questions'; items: string[] } // Q1..Qn tiles (2 columns)
-  | { t: 'steps'; items: { title: string; text: string }[]; cols?: 2 | 3 } // numbered badge cards
+  | { t: 'steps'; items: { title: string; text: string }[]; cols?: 2 | 3; variant?: 'methods' } // numbered badge cards
   | { t: 'groups'; label: string; items: { title: string; text: string }[] } // 3 plain cards
   | { t: 'chips'; label: string; items: string[] }
   | { t: 'flow'; items: { title: string; text: string; highlight?: boolean }[] } // synthesis flow

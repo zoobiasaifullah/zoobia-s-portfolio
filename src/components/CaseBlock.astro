@@ -36,7 +36,7 @@ const showDrafts = import.meta.env.DEV;
 
 {
   b.t === 'steps' && (
-    <ol class:list={['cb-steps', `cols-${b.cols ?? 2}`]}>
+    <ol class:list={['cb-steps', `cols-${b.cols ?? 2}`, { 'cb-steps--methods': b.variant === 'methods' }]}>
       {b.items.map((s, i) => (
         <li class="card cb-step">
           <span class="cb-badge" aria-hidden="true">{i + 1}</span>
@@ -219,6 +219,9 @@ const showDrafts = import.meta.env.DEV;
   .cb-steps.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cb-step { display: flex; flex-direction: column; gap: 8px; padding: 24px; border-radius: var(--radius-tile); }
   .cb-step .cb-badge { margin-bottom: 4px; }
+  .cb-steps--methods { align-items: stretch; }
+  .cb-steps--methods .cb-step { min-height: 216px; padding: 20px; background: var(--section-alt); }
+  .cb-steps--methods .cb-step .cb-badge { width: 28px; height: 28px; font-size: 13px; }
 
   .cb-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cb-group { display: flex; flex-direction: column; gap: 6px; padding: 20px; }
@@ -273,6 +276,7 @@ const showDrafts = import.meta.env.DEV;
   @media (max-width: 767px) {
     .cb-statement { font-size: 19px; line-height: 28px; }
     .cb-questions, .cb-steps.cols-2, .cb-themes, .cb-matrix__grid, .cb-stats { grid-template-columns: 1fr; }
+    .cb-steps--methods .cb-step { min-height: 0; }
     .cb-table__head { display: none; }
     .cb-table__row { grid-template-columns: 1fr; gap: 8px; }
     .cb-table__row > div:last-child::before { content: 'What we changed'; display: block; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 4px; }

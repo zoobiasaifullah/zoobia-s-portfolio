@@ -30,10 +30,14 @@ export const lyra: CaseStudy = {
       number: '02',
       title: 'Research approach',
       blocks: [
-        { t: 'p', text: 'We conducted mixed-methods research to understand both sides of this educational challenge:' },
+        { t: 'p', text: 'We conducted mixed-methods research because the problem had two sides: I needed to understand how students were using AI, while also learning what professors were seeing in the classroom. Prior literature pointed to a similar tension. AI can support feedback and personalized practice, but automation bias can make people over-trust a system’s output, especially when they do not have an easy way to evaluate it [1][2].' },
+        { t: 'p', text: 'I started with the literature and existing AI tutors to frame the questions. I then used a student survey to see how common those patterns were, followed by professor interviews to understand what those patterns looked like in practice.' },
+        { t: 'link', text: '[1] UNESCO, Guidance for generative AI in education and research', href: 'https://unesdoc.unesco.org/ark:/48223/pf0000386693' },
+        { t: 'link', text: '[2] Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education', href: 'https://doi.org/10.1016/j.lindif.2023.102274' },
         {
           t: 'steps',
           cols: 3,
+          variant: 'methods',
           items: [
             { title: 'Literature review', text: "Analyzed existing AI education tools, including Khanmigo and Duolingo's AI tutors, and identified key issues including confirmation bias and automation bias." },
             { title: 'Student survey', text: 'Surveyed 60+ participants about current AI usage patterns in learning and their pain points.' },
@@ -41,12 +45,11 @@ export const lyra: CaseStudy = {
           ],
         },
         { t: 'h3', text: 'Key insights' },
-        { t: 'h3', text: 'Students revealed' },
         {
           t: 'stats',
           items: [
-            { value: '82%', label: 'use AI primarily for speed and efficiency' },
-            { value: '3.6%', label: 'use AI intentionally to deepen understanding' },
+            { value: '82%', label: 'of students use AI primarily for speed and efficiency' },
+            { value: '3.6%', label: 'of students use AI intentionally to deepen understanding' },
           ],
         },
         {
@@ -170,10 +173,10 @@ export const lyra: CaseStudy = {
         {
           t: 'stats',
           items: [
-            { value: '78%', label: 'rated account setup highly intuitive (5/5)' },
-            { value: '82%', label: 'successfully reviewed learned concepts' },
-            { value: '100%', label: 'found the mind maps useful for review' },
-            { value: '100%', label: 'broke down answers using a prompted chat mode' },
+            { value: '78%', label: 'of students rated account setup highly intuitive (5/5)' },
+            { value: '82%', label: 'of students successfully reviewed learned concepts' },
+            { value: '100%', label: 'of students found the mind maps useful for review' },
+            { value: '100%', label: 'of students broke down answers using a prompted chat mode' },
           ],
         },
       ],
