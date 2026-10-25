@@ -21,7 +21,7 @@ export const lyra: CaseStudy = {
       blocks: [
         {
           t: 'p',
-          text: '⚠️ Students are increasingly turning to AI for quick academic solutions, but this convenience comes at a cost. Professors report declining critical thinking skills and surface-level learning as students become dependent on AI-generated answers rather than developing deep understanding.',
+          text: 'Students are increasingly turning to AI for quick academic solutions, but this convenience comes at a cost. Professors report declining critical thinking skills and surface-level learning as students become dependent on AI-generated answers rather than developing deep understanding.',
         },
         { t: 'callout', label: 'How might we', text: 'How might we design an AI tool that enhances learning rather than replacing the thinking process?' },
       ],
