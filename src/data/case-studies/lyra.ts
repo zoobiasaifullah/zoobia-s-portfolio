@@ -86,6 +86,12 @@ export const lyra: CaseStudy = {
           text: 'We focused the solution on two connected parts: chat modes that ask before they answer, and a mind map that remembers the thread between sessions. Lyra keeps the active mode visible while you work and turns the conversation into a mind map you can return to.',
         },
         { t: 'walkthrough' },
+        {
+          t: 'figure',
+          video: 'lyra-demo',
+          alt: 'Lyra interactive learning companion demo',
+          caption: 'Lyra prototype demo.',
+        },
       ],
     },
     {
