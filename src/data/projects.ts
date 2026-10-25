@@ -10,7 +10,7 @@ export const projects: Project[] = [
     tags: [{ label: 'AI · EdTech', variant: 'accent' }],
     role: 'UX Design Team Lead',
     team: '4 students',
-    timeline: '4 weeks',
+    timeline: '6 weeks',
     tint: 'lavender',
     thumb: {
       kind: 'screens',
