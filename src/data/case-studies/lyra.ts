@@ -82,12 +82,8 @@ export const lyra: CaseStudy = {
           ],
         },
         {
-          t: 'statement',
-          text: 'Two things carried the build: chat modes that ask before they answer, and a mind map that remembers the thread between sessions.',
-        },
-        {
           t: 'p',
-          text: 'Lyra answers with a question first, keeps the active mode visible while you work, and turns the conversation into a mind map you can come back to.',
+          text: 'We focused the solution on two connected parts: chat modes that ask before they answer, and a mind map that remembers the thread between sessions. Lyra keeps the active mode visible while you work and turns the conversation into a mind map you can return to.',
         },
         { t: 'walkthrough' },
       ],
@@ -128,10 +124,7 @@ export const lyra: CaseStudy = {
       number: '05',
       title: 'Testing and results',
       blocks: [
-        {
-          t: 'statement',
-          text: "Testing settled one thing fast: the mind map only earns its place if it's wired to the conversation, not sitting next to it.",
-        },
+        { t: 'p', text: 'Testing showed that the mind map needed to stay connected to the conversation to be useful.' },
         {
           t: 'table',
           head: ['What testing showed', 'What we changed'],
@@ -174,10 +167,6 @@ export const lyra: CaseStudy = {
       number: '06',
       title: 'Reflection',
       blocks: [
-        {
-          t: 'statement',
-          text: 'The gap between what students said and what their professors saw is the part I keep coming back to.',
-        },
         {
           t: 'quote',
           text: "The hardest part wasn't designing Lyra. It was choosing to build something students hadn't asked for, because what they wanted in the moment wasn't what was going to help them.",
