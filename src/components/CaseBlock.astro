@@ -209,6 +209,7 @@ const showDrafts = import.meta.env.DEV;
   .cb-callout p { color: var(--text); font-weight: 500; }
   .cb-note { align-self: flex-start; white-space: normal; }
   .cb-citation { align-self: flex-start; font-size: 12px; line-height: 18px; font-weight: 400; color: var(--text-body); }
+  .cb-citation + .cb-citation { margin-top: -24px; }
   .cb-citation:hover, .cb-citation:focus-visible { color: var(--text); }
 
   .cb-questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
