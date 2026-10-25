@@ -20,6 +20,7 @@ export type Block =
   | { t: 'themes'; items: { title: string; note: string }[] }
   | { t: 'matrix'; quadrants: { ideas: { text: string; shipped?: boolean }[] }[]; caption: string }
   | { t: 'link'; text: string; href: string }
+  | { t: 'figma'; url: string; title: string }
   | { t: 'walkthrough' };
 
 export interface Section {
