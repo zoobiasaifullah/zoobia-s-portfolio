@@ -10,6 +10,13 @@ const showDrafts = import.meta.env.DEV;
 ---
 
 {b.t === 'p' && <p class="cb-p">{b.text}</p>}
+{
+  b.t === 'list' && (
+    <ol class:list={['cb-list-simple', { 'is-unordered': !b.ordered }]}>
+      {b.items.map((item) => <li>{item}</li>)}
+    </ol>
+  )
+}
 {b.t === 'statement' && <p class="cb-statement">{b.text}</p>}
 {b.t === 'h3' && <h3 class="h4 cb-h3">{b.text}</h3>}
 
@@ -201,6 +208,10 @@ const showDrafts = import.meta.env.DEV;
 <style>
   .cb-video { display: block; width: 100%; max-width: 100%; height: auto; max-height: 640px; object-fit: contain; object-position: center; }
   .cb-p { max-width: 720px; }
+  .cb-list-simple { display: flex; flex-direction: column; gap: 10px; max-width: 720px; padding-left: 24px; }
+  .cb-list-simple.is-unordered { list-style: disc; }
+  .cb-list-simple:not(.is-unordered) { list-style: decimal; }
+  .cb-list-simple li { padding-left: 4px; }
   .cb-statement { font-size: 22px; line-height: 32px; font-weight: 600; letter-spacing: -0.025em; color: var(--text); max-width: 760px; }
   .cb-h3 { margin-top: 8px; }
   .cb-block { display: flex; flex-direction: column; gap: 12px; }

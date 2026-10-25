@@ -30,14 +30,29 @@ export const lyra: CaseStudy = {
       number: '02',
       title: 'Research approach',
       blocks: [
-        { t: 'p', text: 'We conducted mixed-methods research because the problem had two sides: I needed to understand how students were using AI, while also learning what professors were seeing in the classroom. Our literature review showed a similar tension. AI can support feedback and personalized practice, but automation bias can make people over-trust a system’s output, especially when they do not have an easy way to evaluate it [1][2].' },
-        { t: 'p', text: 'I started with the literature and existing AI tutors to frame the questions. I then used a student survey to see how common those patterns were, followed by professor interviews to understand what those patterns looked like in practice.' },
+        { t: 'p', text: 'We conducted mixed-methods research to understand both sides of this educational challenge:' },
+        {
+          t: 'list',
+          ordered: true,
+          items: [
+            'Literature review: Analyzed existing AI education tools, including Khanmigo and Duolingo’s AI tutors, and identified key issues including confirmation bias and automation bias.',
+            'Student survey (60+ participants): Explored current AI usage patterns in learning and pain points.',
+            'Professor interviews: Examined educator perspectives on AI’s impact on learning.',
+          ],
+        },
+        { t: 'p', text: 'The literature review helped us understand the risks and possibilities already identified in AI-supported education before we designed our own research. Existing guidance and research describe how AI can support feedback and personalized practice, while also warning that people may over-trust automated output when they cannot easily evaluate it [1][2].' },
         { t: 'link', text: '[1] UNESCO, Guidance for generative AI in education and research', href: 'https://unesdoc.unesco.org/ark:/48223/pf0000386693' },
         { t: 'link', text: '[2] Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education', href: 'https://doi.org/10.1016/j.lindif.2023.102274' },
-        { t: 'p', text: "I reviewed existing AI education tools, including Khanmigo and Duolingo's AI tutors, to identify risks such as confirmation bias and automation bias. I surveyed 60+ students to understand how they used AI and what frustrated them, then interviewed professors to compare those patterns with what they were seeing in class." },
         { t: 'h3', text: 'Key insights' },
-        { t: 'callout', label: 'Students reported', text: '82% of students use AI primarily for speed and efficiency. Only 3.6% use it intentionally to deepen understanding.' },
-        { t: 'p', text: 'Some students felt guilty submitting work they did not fully understand. Others pointed to inaccurate answers and the difficulty of knowing how to prompt AI effectively.' },
+        {
+          t: 'list',
+          items: [
+            '82% of students use AI primarily for speed and efficiency.',
+            'Only 3.6% use AI intentionally to deepen understanding.',
+            'Some students feel guilty submitting AI work they do not fully comprehend.',
+            'Pain points include AI inaccuracies and ineffective prompting.',
+          ],
+        },
         { t: 'h3', text: 'Professors emphasized' },
         {
           t: 'quote',

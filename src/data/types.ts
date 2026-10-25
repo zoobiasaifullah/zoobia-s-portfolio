@@ -2,6 +2,7 @@ export type Tint = 'blue' | 'lavender' | 'mint';
 
 export type Block =
   | { t: 'p'; text: string }
+  | { t: 'list'; ordered?: boolean; items: string[] }
   | { t: 'statement'; text: string } // 20px semibold lead line at the head of a section
   | { t: 'h3'; text: string } // 20px semibold sub heading
   | { t: 'callout'; label: string; text: string }
