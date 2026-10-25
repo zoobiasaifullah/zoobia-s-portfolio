@@ -2,7 +2,6 @@
 import ProjectCard from './ProjectCard.astro';
 import { projects } from '../data/projects';
 
-const [featured, ...rest] = projects;
 ---
 
 <section class="work" id="work" aria-labelledby="work-title">
@@ -12,9 +11,8 @@ const [featured, ...rest] = projects;
       <h2 id="work-title" class="h2">Case studies</h2>
     </header>
     <div class="work__grid">
-      <ProjectCard project={featured} featured index={0} />
       <div class="work__pair">
-        {rest.map((p, i) => <ProjectCard project={p} index={i} />)}
+        {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
       </div>
     </div>
   </div>
