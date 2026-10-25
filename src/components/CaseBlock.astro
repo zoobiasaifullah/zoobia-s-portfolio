@@ -195,16 +195,6 @@ const showDrafts = import.meta.env.DEV;
 }
 
 {b.t === 'walkthrough' && <Walkthrough />}
-{b.t === 'figma' && (
-  <div class="cb-figma">
-    <iframe
-      src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(b.url)}`}
-      title={b.title}
-      allowfullscreen
-    />
-  </div>
-)}
-
 <script>
   // Play muted videos only while visible, and never autoplay for people who prefer reduced motion.
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -272,8 +262,6 @@ const showDrafts = import.meta.env.DEV;
   .cb-figure__frame { border-radius: var(--radius-tile); overflow: hidden; border: 1px solid var(--border); background: var(--section-alt); min-height: 240px; }
   .cb-figure__frame :global(.media) { width: 100%; max-width: 100%; height: auto; object-fit: contain; object-position: center; }
   .cb-figure figcaption { color: var(--text-body); }
-  .cb-figma { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-tile); background: var(--section-alt); }
-  .cb-figma iframe { display: block; width: 100%; height: 100%; border: 0; }
   .tint-blue .cb-figure__frame { background: var(--tint-blue); }
   .tint-lavender .cb-figure__frame { background: var(--tint-lavender); }
   .tint-mint .cb-figure__frame { background: var(--tint-mint); }
