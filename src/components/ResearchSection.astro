@@ -1,0 +1,124 @@
+---
+---
+
+<section class="rs-section" aria-labelledby="rs-title">
+  <header class="rs-rail">
+    <p class="rs-num">02</p>
+    <h2 id="rs-title" class="rs-title">Research approach</h2>
+  </header>
+
+  <div class="rs-body">
+    <div class="rs-group">
+      <p class="rs-p">We needed both sides of the problem: how students actually use AI, and what their professors notice once those students have to work without it. So we ran three strands of research, each answering a different question.</p>
+
+      <dl class="rs-methods">
+        <div class="rs-method">
+          <dt>Literature review</dt>
+          <dd>What's already known. We looked at Khanmigo and Duolingo's AI tutors, and found confirmation bias and automation bias come up again and again.</dd>
+        </div>
+        <div class="rs-method">
+          <dt>Student survey <span class="rs-count">· 60+</span></dt>
+          <dd>How students use AI for learning today, and where it lets them down.</dd>
+        </div>
+        <div class="rs-method">
+          <dt>Professor interviews</dt>
+          <dd>What educators see in the work students hand in, and in how they think in class.</dd>
+        </div>
+      </dl>
+
+      <p class="rs-p">The literature gave us a starting point before we designed our own questions. Existing guidance shows AI can help with feedback and personalized practice, but it also warns that people over-trust automated answers they can't easily check.<sup class="rs-cite"><a href="#rs-refs">1,2</a></sup> That warning became the thing we went looking for.</p>
+    </div>
+
+    <div class="rs-group">
+      <h3 class="rs-h3">What students told us</h3>
+
+      <div class="rs-stats">
+        <div class="rs-stat">
+          <span class="rs-stat-num rs-stat-num--accent">82%</span>
+          <span class="rs-stat-label">use AI mainly for speed and efficiency</span>
+        </div>
+        <div class="rs-stat">
+          <span class="rs-stat-num">3.6%</span>
+          <span class="rs-stat-label">use it on purpose to understand more deeply</span>
+        </div>
+      </div>
+
+      <p class="rs-p">Put side by side, those two numbers say most of it: nearly every student is using AI, but almost none are using it to learn. Students weren't careless about this, either. <strong>Some told us they feel guilty</strong> handing in work they don't fully understand. The frustrations they did name were practical ones, like inaccurate answers and not knowing how to write a good prompt.</p>
+    </div>
+
+    <div class="rs-group">
+      <h3 class="rs-h3">What professors saw</h3>
+      <p class="rs-p">Professors described the same habit from the other side. To them, the issue isn't that students use AI. It's that the tool skips the part of learning where the student has to think.</p>
+
+      <figure class="rs-quote">
+        <blockquote>Students don't think AI is a collaboration tool, they think of it as a do-my-homework tool.</blockquote>
+        <figcaption>Professor interview</figcaption>
+      </figure>
+      <figure class="rs-quote">
+        <blockquote>I ask questions, then follow up with more questions, that's how students start thinking. AI skips that process.</blockquote>
+        <figcaption>Professor interview</figcaption>
+      </figure>
+    </div>
+
+    <div class="rs-core">
+      <p class="rs-core-label">The core problem</p>
+      <p class="rs-core-text">AI tools give an answer right away and skip the back-and-forth questioning that deep learning depends on.</p>
+    </div>
+
+    <ol id="rs-refs" class="rs-refs">
+      <li><a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693">UNESCO, Guidance for generative AI in education and research</a></li>
+      <li><a href="https://doi.org/10.1016/j.lindif.2023.102274">Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education</a></li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .rs-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 64px;
+    align-items: flex-start;
+    font-family: Poppins, ui-sans-serif, system-ui, sans-serif;
+    color: var(--text-body, #49454f);
+  }
+  .rs-rail { flex: 1 1 220px; max-width: 260px; }
+  .rs-num { margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--primary, #6750a4); }
+  .rs-title { margin: 0; font-size: 32px; line-height: 1.2; font-weight: 600; color: var(--text, #1c1b1f); }
+  .rs-body { flex: 999 1 560px; min-width: 0; max-width: 700px; display: flex; flex-direction: column; gap: 48px; }
+  .rs-group { display: flex; flex-direction: column; gap: 20px; }
+  .rs-p { margin: 0; font-size: 17px; line-height: 1.75; }
+  .rs-p strong { color: var(--text, #1c1b1f); font-weight: 600; }
+  .rs-h3 { margin: 0; font-size: 20px; font-weight: 600; color: var(--text, #1c1b1f); }
+  .rs-cite { font-size: 11px; }
+  .rs-cite a { color: var(--primary, #6750a4); text-decoration: none; }
+  .rs-methods { margin: 0; border-top: 1px solid var(--border, #e7e0ec); }
+  .rs-method { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 16px 0; border-bottom: 1px solid var(--border, #e7e0ec); }
+  .rs-method dt { flex: 0 0 200px; font-size: 15px; font-weight: 600; color: var(--text, #1c1b1f); }
+  .rs-method dd { margin: 0; flex: 1 1 300px; font-size: 15px; line-height: 1.65; }
+  .rs-count { font-weight: 500; color: var(--primary, #6750a4); }
+  .rs-stats { display: flex; flex-wrap: wrap; gap: 16px 48px; padding: 4px 0; }
+  .rs-stat { display: flex; align-items: baseline; gap: 12px; }
+  .rs-stat-num { font-size: 36px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; color: var(--text, #1c1b1f); }
+  .rs-stat-num--accent { color: var(--primary, #6750a4); }
+  .rs-stat-label { font-size: 14px; line-height: 1.4; max-width: 170px; }
+  .rs-quote { margin: 0; padding: 4px 0 4px 28px; position: relative; }
+  .rs-quote::before { content: "\201C"; position: absolute; left: 0; top: -6px; font-size: 40px; line-height: 1; font-weight: 700; color: var(--tape, #b69df8); }
+  .rs-quote blockquote { margin: 0; font-size: 18px; line-height: 1.6; font-weight: 500; color: var(--text, #1c1b1f); }
+  .rs-quote figcaption { margin-top: 6px; font-size: 13px; }
+  .rs-core { background: var(--section-alt, #f7f2fa); border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px; }
+  .rs-core-label { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary, #6750a4); }
+  .rs-core-text { margin: 0; font-size: 17px; line-height: 1.6; font-weight: 500; color: var(--text, #1c1b1f); }
+  .rs-refs { margin: 0; padding: 16px 0 0 18px; border-top: 1px solid var(--border, #e7e0ec); font-size: 12px; line-height: 1.7; }
+  .rs-refs a { color: inherit; }
+
+  @media (max-width: 767px) {
+    .rs-section { gap: 28px; }
+    .rs-body { flex-basis: 100%; gap: 36px; }
+    .rs-title { font-size: 28px; }
+    .rs-p { font-size: 16px; }
+    .rs-method dt { flex-basis: 100%; }
+    .rs-stat { align-items: flex-start; }
+  }
+</style>

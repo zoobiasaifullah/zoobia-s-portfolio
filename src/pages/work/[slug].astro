@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CaseBlock from '../../components/CaseBlock.astro';
+import ResearchSection from '../../components/ResearchSection.astro';
 import Footer from '../../components/Footer.astro';
 import { caseStudies, caseStudyBySlug } from '../../data/case-studies';
 import { projectBySlug } from '../../data/projects';
@@ -40,7 +41,7 @@ const meta = [
 
     {
       cs.sections.map((s) => (
-        <section class="sec" aria-labelledby={`s-${s.number}`}>
+        s.number === '02' ? <ResearchSection /> : <section class="sec" aria-labelledby={`s-${s.number}`}>
           <div class="container sec__inner">
             <div class="sec__label" data-reveal>
               <span class="eyebrow">{s.number}</span>
