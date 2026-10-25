@@ -20,14 +20,10 @@ export const lyra: CaseStudy = {
       title: 'The challenge',
       blocks: [
         {
-          t: 'statement',
-          text: 'Every student we talked to already had access to AI. None of them had a reason to think before asking it something.',
-        },
-        {
           t: 'p',
-          text: 'Students increasingly turn to AI for quick academic answers. Professors report weaker critical thinking and surface-level learning as students depend on AI-generated work instead of developing real understanding.',
+          text: '⚠️ Students are increasingly turning to AI for quick academic solutions, but this convenience comes at a cost. Professors report declining critical thinking skills and surface-level learning as students become dependent on AI-generated answers rather than developing deep understanding.',
         },
-        { t: 'callout', label: 'How might we', text: 'How might we get students to think before AI answers, instead of after?' },
+        { t: 'callout', label: 'How might we', text: 'How might we design an AI tool that enhances learning rather than replacing the thinking process?' },
       ],
     },
     {
