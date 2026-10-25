@@ -28,39 +28,46 @@ export const lyra: CaseStudy = {
     },
     {
       number: '02',
-      title: 'Research and synthesis',
+      title: 'Research approach',
       blocks: [
+        { t: 'p', text: 'We conducted mixed-methods research to understand both sides of this educational challenge:' },
         {
-          t: 'statement',
-          text: "The four themes kept circling the same gap: students weren't short on answers, they were short on reasons to slow down first.",
+          t: 'steps',
+          cols: 3,
+          items: [
+            { title: 'Literature review', text: "Analyzed existing AI education tools, including Khanmigo and Duolingo's AI tutors, and identified key issues including confirmation bias and automation bias." },
+            { title: 'Student survey', text: 'Surveyed 60+ participants about current AI usage patterns in learning and their pain points.' },
+            { title: 'Professor interviews', text: "Explored educator perspectives on AI's impact on learning." },
+          ],
         },
+        { t: 'h3', text: 'Key insights' },
+        { t: 'h3', text: 'Students revealed' },
         {
           t: 'stats',
           items: [
-            { value: '82%', label: 'of surveyed students use AI mainly for speed and efficiency' },
-            { value: '3.6%', label: 'use AI intentionally to deepen their understanding' },
+            { value: '82%', label: 'use AI primarily for speed and efficiency' },
+            { value: '3.6%', label: 'use AI intentionally to deepen understanding' },
           ],
         },
-        { t: 'h3', text: 'What we heard, clustered' },
         {
           t: 'themes',
           items: [
-            { title: 'AI hides the struggle', note: 'Professors hold 15 to 16 office hours a week, and students still avoid asking for help' },
-            { title: 'Speed beats depth', note: 'Students try to finish as quickly as possible, but thoughtful work needs time and space' },
-            { title: 'The feedback loop breaks', note: 'Loss of the student’s authentic voice makes it hard to personalize teaching' },
-            { title: 'AI is a symptom', note: 'AI may not be the root issue: assignments may be too hard, or motivation may be missing' },
+            { title: 'Some feel guilty', note: "Some students feel guilty submitting AI work they do not fully comprehend." },
+            { title: "AI isn't always reliable", note: 'Pain points include inaccurate answers and ineffective prompting.' },
           ],
         },
-        { t: 'h3', text: 'What participants said' },
-        // Placeholder in the design file. Hidden in production builds until you replace the text.
+        { t: 'h3', text: 'Professors emphasized' },
         {
           t: 'quote',
-          draft: true,
-          text: 'Swap in: the real quote, on asking questions to build understanding',
+          text: "Students don't think AI is a collaboration tool, they think of it as a do-my-homework tool.",
           attribution: 'Professor interview',
         },
-        // TODO: link to your FigJam / Miro research board
-        { t: 'link', text: 'Open the research board →', href: '#' },
+        {
+          t: 'quote',
+          text: "I ask questions, then follow up with more questions, that's how students start thinking. AI skips that process.",
+          attribution: 'Professor interview',
+        },
+        { t: 'callout', label: 'The core problem', text: 'AI tools provide immediate answers without fostering the reflective questioning process essential for deep learning.' },
       ],
     },
     {
