@@ -74,35 +74,33 @@ export const lyra: CaseStudy = {
         { t: 'p', text: 'The research gave us three principles to design against.' },
         {
           t: 'steps',
-          cols: 3,
+          cols: 2,
           items: [
             { title: 'Slow down the process', text: 'Encourage reflection before giving answers.' },
             { title: 'Make thinking visible', text: 'Help students see how concepts connect.' },
             { title: "Guide, don't solve", text: 'Use Socratic questioning to build understanding.' },
           ],
         },
+        {
+          t: 'steps',
+          cols: 2,
+          items: [
+            { title: 'Map the flow', text: 'We mapped how a student would move from a question to a response, reflection, and review.' },
+            { title: 'Wireframe', text: 'We turned the principles into a chat flow, mode selection, and a mind map that could carry context forward.' },
+            { title: 'Paper prototype', text: 'We tested the flow with students before committing to a digital interface.' },
+            { title: 'Digital prototype', text: 'We brought the strongest direction into Figma and tested how the pieces worked together.' },
+          ],
+        },
         { t: 'h3', text: 'Prioritizing what to build' },
         {
           t: 'p',
-          text: 'The framing was simple: make AI more of a tool than a separate brain. Ideas split into encouraging learning, encouraging review and discouraging shortcuts, then went onto an impact-effort matrix.',
+          text: 'We sorted the remaining ideas by impact and effort, then used the matrix to decide what belonged in the prototype.',
         },
         {
-          t: 'matrix',
-          // Order: top-left (high impact, low effort), top-right (high impact, high effort),
-          // bottom-left (low impact, low effort), bottom-right (low impact, high effort)
-          quadrants: [
-            {
-              ideas: [
-                { text: 'Adaptive chat modes', shipped: true },
-                { text: 'Guiding responses: “you’re close, try this direction”', shipped: true },
-                { text: 'Confidence check at the end of a session', shipped: true },
-              ],
-            },
-            { ideas: [{ text: 'Mind map stays in sync with the chat', shipped: true }, { text: 'Swap one chat topic for maths or code' }] },
-            { ideas: [{ text: 'Clear titles for every screen' }, { text: 'Back button between modes' }] },
-            { ideas: [] },
-          ],
-          caption: 'Highlighted ideas shipped in the prototype',
+          t: 'figure',
+          image: 'lyra-impact-effort',
+          alt: 'Impact and effort matrix used to prioritize Lyra design ideas',
+          caption: 'Impact-effort matrix used to prioritize the prototype scope.',
         },
         {
           t: 'p',
