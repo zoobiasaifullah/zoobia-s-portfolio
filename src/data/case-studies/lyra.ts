@@ -30,7 +30,7 @@ export const lyra: CaseStudy = {
       number: '02',
       title: 'Research approach',
       blocks: [
-        { t: 'p', text: 'We conducted mixed-methods research because the problem had two sides: I needed to understand how students were using AI, while also learning what professors were seeing in the classroom. Prior literature pointed to a similar tension. AI can support feedback and personalized practice, but automation bias can make people over-trust a system’s output, especially when they do not have an easy way to evaluate it [1][2].' },
+        { t: 'p', text: 'We conducted mixed-methods research because the problem had two sides: I needed to understand how students were using AI, while also learning what professors were seeing in the classroom. Our literature review showed a similar tension. AI can support feedback and personalized practice, but automation bias can make people over-trust a system’s output, especially when they do not have an easy way to evaluate it [1][2].' },
         { t: 'p', text: 'I started with the literature and existing AI tutors to frame the questions. I then used a student survey to see how common those patterns were, followed by professor interviews to understand what those patterns looked like in practice.' },
         { t: 'link', text: '[1] UNESCO, Guidance for generative AI in education and research', href: 'https://unesdoc.unesco.org/ark:/48223/pf0000386693' },
         { t: 'link', text: '[2] Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education', href: 'https://doi.org/10.1016/j.lindif.2023.102274' },

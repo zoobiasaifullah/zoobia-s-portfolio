@@ -183,7 +183,7 @@ const showDrafts = import.meta.env.DEV;
 
 {
   b.t === 'link' && (
-    <a class="link-btn" href={b.href}>{b.text}</a>
+    <a class:list={['link-btn', { 'cb-citation': b.text.startsWith('[') }]} href={b.href}>{b.text}</a>
   )
 }
 
@@ -208,6 +208,8 @@ const showDrafts = import.meta.env.DEV;
   .cb-callout { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px; border-left: 4px solid var(--primary); border-radius: 8px; background: var(--section-alt); }
   .cb-callout p { color: var(--text); font-weight: 500; }
   .cb-note { align-self: flex-start; white-space: normal; }
+  .cb-citation { align-self: flex-start; font-size: 12px; line-height: 18px; font-weight: 400; color: var(--text-body); }
+  .cb-citation:hover, .cb-citation:focus-visible { color: var(--text); }
 
   .cb-questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .cb-questions li { display: flex; gap: 12px; padding: 16px; border-radius: var(--radius-sm); background: var(--section-alt); color: var(--text); }
