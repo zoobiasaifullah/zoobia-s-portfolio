@@ -56,10 +56,9 @@ export const lyra: CaseStudy = {
           ],
         },
         { t: 'h3', text: 'What participants said' },
-        // TODO: replace this placeholder with the real quote. It is visible on purpose so it is not forgotten.
         {
           t: 'quote',
-          text: 'Swap in: the real quote, on asking questions to build understanding',
+          text: "Students don't think AI is a collaboration tool — they think of it as a do-my-homework tool.",
           attribution: 'Professor interview',
         },
       ],
