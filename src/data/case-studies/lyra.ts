@@ -69,12 +69,8 @@ export const lyra: CaseStudy = {
     },
     {
       number: '03',
-      title: 'Direction and priorities',
+      title: 'Design process',
       blocks: [
-        {
-          t: 'statement',
-          text: 'The direction came down to three habits we wanted Lyra to have: slow down, show its thinking, and guide rather than solve.',
-        },
         { t: 'p', text: 'The research gave us three principles to design against.' },
         {
           t: 'steps',
@@ -103,8 +99,8 @@ export const lyra: CaseStudy = {
               ],
             },
             { ideas: [{ text: 'Mind map stays in sync with the chat', shipped: true }, { text: 'Swap one chat topic for maths or code' }] },
-            { ideas: [{ text: 'Clear titles for every screen' }, { text: 'Scrollable chats' }, { text: 'Back button between modes' }] },
-            { ideas: [{ text: 'Curvy display type' }, { text: 'Assets tidied into frames' }] },
+            { ideas: [{ text: 'Clear titles for every screen' }, { text: 'Back button between modes' }] },
+            { ideas: [] },
           ],
           caption: 'Highlighted ideas shipped in the prototype',
         },
