@@ -40,7 +40,7 @@ const meta = [
 
     {
       cs.sections.map((s) => (
-        <section class:list={['sec', { 'sec--research': s.number === '02' }]} aria-labelledby={`s-${s.number}`}>
+        <section class="sec" aria-labelledby={`s-${s.number}`}>
           <div class="container sec__inner">
             <div class="sec__label" data-reveal>
               <span class="eyebrow">{s.number}</span>
@@ -87,23 +87,6 @@ const meta = [
   .sec__inner { display: grid; grid-template-columns: 256px minmax(0, 800px); gap: 64px; justify-content: start; }
   .sec__label { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 96px; align-self: start; }
   .sec__body { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
-  .sec--research .sec__body { gap: 18px; }
-  .sec--research :global(.cb-h3) { margin-top: 8px; font-size: 13px; line-height: 18px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-body); }
-  .sec--research :global(.cb-citation) { margin-top: -14px; font-size: 10px; line-height: 13px; opacity: 0.48; }
-  .sec--research :global(.cb-citation + .cb-citation) { margin-top: -18px; }
-  .sec--research :global(.cb-steps--methods) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--border); }
-  .sec--research :global(.cb-steps--methods .cb-step) { min-height: 0; padding: 18px 20px; border: 0; border-right: 1px solid var(--border); border-radius: 0; background: transparent; }
-  .sec--research :global(.cb-steps--methods .cb-step:last-child) { border-right: 0; }
-  .sec--research :global(.cb-steps--methods .cb-badge) { width: 24px; height: 24px; margin-bottom: 2px; font-size: 12px; }
-  .sec--research :global(.cb-stats) { gap: 0; border-block: 1px solid var(--border); }
-  .sec--research :global(.cb-stat) { padding: 16px 20px; border-radius: 0; background: transparent; }
-  .sec--research :global(.cb-stat + .cb-stat) { border-left: 1px solid var(--border); }
-  .sec--research :global(.cb-stat dt) { font-size: 32px; line-height: 38px; }
-  .sec--research :global(.cb-themes) { gap: 0; border-bottom: 1px solid var(--border); }
-  .sec--research :global(.cb-theme) { padding: 16px 20px 18px 0; border-radius: 0; background: transparent; }
-  .sec--research :global(.cb-theme + .cb-theme) { padding-left: 20px; border-left: 1px solid var(--border); }
-  .sec--research :global(.cb-quote) { padding: 16px 0 16px 20px; border-left: 3px solid var(--primary); border-radius: 0; background: transparent; }
-  .sec--research :global(.cb-quote + .cb-quote) { border-top: 1px solid var(--border); }
 
   .next { padding-block: 64px 96px; }
   .next__card {
@@ -134,8 +117,5 @@ const meta = [
     .meta { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
     .next { padding-block: 40px 64px; }
     .next__card { padding: 28px 20px; border-radius: 20px; }
-    .sec--research :global(.cb-steps--methods), .sec--research :global(.cb-stats) { grid-template-columns: 1fr; }
-    .sec--research :global(.cb-steps--methods .cb-step), .sec--research :global(.cb-stat), .sec--research :global(.cb-theme + .cb-theme) { border-left: 0; border-right: 0; padding-inline: 0; }
-    .sec--research :global(.cb-steps--methods .cb-step + .cb-step), .sec--research :global(.cb-stat + .cb-stat), .sec--research :global(.cb-theme + .cb-theme) { border-top: 1px solid var(--border); }
   }
 </style>

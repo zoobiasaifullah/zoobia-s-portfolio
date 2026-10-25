@@ -34,31 +34,10 @@ export const lyra: CaseStudy = {
         { t: 'p', text: 'I started with the literature and existing AI tutors to frame the questions. I then used a student survey to see how common those patterns were, followed by professor interviews to understand what those patterns looked like in practice.' },
         { t: 'link', text: '[1] UNESCO, Guidance for generative AI in education and research', href: 'https://unesdoc.unesco.org/ark:/48223/pf0000386693' },
         { t: 'link', text: '[2] Kasneci et al., ChatGPT for good? On opportunities and challenges of large language models for education', href: 'https://doi.org/10.1016/j.lindif.2023.102274' },
-        {
-          t: 'steps',
-          cols: 3,
-          variant: 'methods',
-          items: [
-            { title: 'Literature review', text: "Analyzed existing AI education tools, including Khanmigo and Duolingo's AI tutors, and identified key issues including confirmation bias and automation bias." },
-            { title: 'Student survey', text: 'Surveyed 60+ participants about current AI usage patterns in learning and their pain points.' },
-            { title: 'Professor interviews', text: "Explored educator perspectives on AI's impact on learning." },
-          ],
-        },
+        { t: 'p', text: "I reviewed existing AI education tools, including Khanmigo and Duolingo's AI tutors, to identify risks such as confirmation bias and automation bias. I surveyed 60+ students to understand how they used AI and what frustrated them, then interviewed professors to compare those patterns with what they were seeing in class." },
         { t: 'h3', text: 'Key insights' },
-        {
-          t: 'stats',
-          items: [
-            { value: '82%', label: 'of students use AI primarily for speed and efficiency' },
-            { value: '3.6%', label: 'of students use AI intentionally to deepen understanding' },
-          ],
-        },
-        {
-          t: 'themes',
-          items: [
-            { title: 'Some feel guilty', note: "Some students feel guilty submitting AI work they do not fully comprehend." },
-            { title: "AI isn't always reliable", note: 'Pain points include inaccurate answers and ineffective prompting.' },
-          ],
-        },
+        { t: 'callout', label: 'Students reported', text: '82% of students use AI primarily for speed and efficiency. Only 3.6% use it intentionally to deepen understanding.' },
+        { t: 'p', text: 'Some students felt guilty submitting work they did not fully understand. Others pointed to inaccurate answers and the difficulty of knowing how to prompt AI effectively.' },
         { t: 'h3', text: 'Professors emphasized' },
         {
           t: 'quote',
