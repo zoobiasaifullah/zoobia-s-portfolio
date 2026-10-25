@@ -69,18 +69,34 @@ export const lyra: CaseStudy = {
     },
     {
       number: '03',
-      title: 'Design process',
+      title: 'Design direction',
       blocks: [
         { t: 'p', text: 'The research gave us three principles to design against.' },
         {
           t: 'steps',
-          cols: 2,
+          cols: 3,
           items: [
             { title: 'Slow down the process', text: 'Encourage reflection before giving answers.' },
             { title: 'Make thinking visible', text: 'Help students see how concepts connect.' },
             { title: "Guide, don't solve", text: 'Use Socratic questioning to build understanding.' },
           ],
         },
+        {
+          t: 'statement',
+          text: 'Two things carried the build: chat modes that ask before they answer, and a mind map that remembers the thread between sessions.',
+        },
+        {
+          t: 'p',
+          text: 'Lyra answers with a question first, keeps the active mode visible while you work, and turns the conversation into a mind map you can come back to.',
+        },
+        { t: 'walkthrough' },
+      ],
+    },
+    {
+      number: '04',
+      title: 'Design process',
+      blocks: [
+        { t: 'p', text: 'We moved from the principles into a focused process: map the learning flow, test the structure early, then prioritize what was worth building.' },
         {
           t: 'steps',
           cols: 2,
@@ -106,21 +122,6 @@ export const lyra: CaseStudy = {
           t: 'p',
           text: 'The top-left cluster became the sprint: adaptive chat modes, guiding responses and an end-of-session confidence check, plus the one high-effort bet worth making, keeping the mind map in sync with the chat.',
         },
-      ],
-    },
-    {
-      number: '04',
-      title: 'The solution',
-      blocks: [
-        {
-          t: 'statement',
-          text: 'Two things carried the build: chat modes that ask before they answer, and a mind map that remembers the thread between sessions.',
-        },
-        {
-          t: 'p',
-          text: 'Lyra answers with a question first, keeps the active mode visible while you work, and turns the conversation into a mind map you can come back to. Step through the walkthrough below.',
-        },
-        { t: 'walkthrough' },
       ],
     },
     {
