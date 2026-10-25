@@ -103,6 +103,18 @@ export const lyra: CaseStudy = {
             { title: 'Digital prototype', text: 'We brought the strongest direction into Figma and tested how the pieces worked together.' },
           ],
         },
+        {
+          t: 'figure',
+          image: 'lyra-user-flow',
+          alt: 'Lyra user flow showing onboarding, chat modes, quiz, settings, and mind map paths',
+          caption: 'User flow mapping the main route through onboarding, chat, and review.',
+        },
+        {
+          t: 'figure',
+          image: 'lyra-wireframes',
+          alt: 'Lyra wireframes showing onboarding, chat, mind map, settings, and supporting interface concepts',
+          caption: 'Early wireframes for the onboarding, chat, mind map, and settings flows.',
+        },
         { t: 'h3', text: 'Prioritizing what to build' },
         {
           t: 'p',
