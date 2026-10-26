@@ -173,11 +173,6 @@ export const bucketize: CaseStudy = {
           t: 'p',
           text: 'Watching users click the search bar again and again when asked to “ask the AI” showed me how familiarity with our own design can blind us to how people actually behave. Now I ask “does this match how users naturally think?” instead of “does this work for us?”',
         },
-        { t: 'h3', text: 'Challenges' },
-        {
-          t: 'p',
-          text: 'Scope: we started too broad and had to refocus on core user needs. Assumptions: our design intuitions and real user behavior differed more than we expected. Coordination: a tight timeline and different schedules needed structured communication and clear roles.',
-        },
         {
           t: 'p',
           text: "That's the point of Bucketize: what one class of students learns shouldn't have to be relearned from scratch by the next one.",
