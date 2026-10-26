@@ -158,49 +158,6 @@ export const lyra: CaseStudy = {
     },
     {
       number: '05',
-      title: 'Testing and results',
-      blocks: [
-        { t: 'p', text: 'Testing showed that the mind map needed to stay connected to the conversation to be useful.' },
-        {
-          t: 'table',
-          head: ['What testing showed', 'What we changed'],
-          rows: [
-            {
-              found: 'Mode switching was unclear',
-              foundText: 'Chat modes made sense, but transitions and feedback were weak.',
-              change: 'Added visual indicators and clearer transitions between modes.',
-            },
-            {
-              found: 'Mind maps felt detached',
-              foundText: 'Useful for organizing knowledge, but hard to reach and not linked to chats.',
-              change: 'Integrated mind maps with chat responses and added more detail.',
-            },
-            {
-              found: 'Onboarding worked, with room to trim',
-              foundText: 'Participants got through onboarding and the learning style quiz on their own, but some steps could go.',
-              change: 'Streamlined the learning style assessment and filled missing steps.',
-            },
-            {
-              found: 'Reflection needed a nudge',
-              foundText: 'Users responded well to prompts that asked them to reflect.',
-              change: 'Added confidence checks and micro-interactions throughout.',
-            },
-          ],
-        },
-        { t: 'h3', text: 'Final testing' },
-        {
-          t: 'stats',
-          items: [
-            { value: '78%', label: 'of students rated account setup highly intuitive (5/5)' },
-            { value: '82%', label: 'of students successfully reviewed learned concepts' },
-            { value: '100%', label: 'of students found the mind maps useful for review' },
-            { value: '100%', label: 'of students broke down answers using a prompted chat mode' },
-          ],
-        },
-      ],
-    },
-    {
-      number: '06',
       title: 'Reflection',
       blocks: [
         {
@@ -211,11 +168,6 @@ export const lyra: CaseStudy = {
         {
           t: 'p',
           text: "Students told us they understood the material AI had helped them with. Their professors saw confusion once those same students had to work without it. That gap between the two is what pushed the whole direction toward Lyra asking questions instead of answering them, and I still check for it on every project now: what someone says they know isn't always what shows up when you actually test them on it.",
-        },
-        { t: 'h3', text: 'Challenges' },
-        {
-          t: 'p',
-          text: 'A pivot under tight deadlines meant fast strategy shifts and flexible coordination. Limited time for deep interviews, so we leaned on surveys and literature. Aligning chat modes with mind maps took several iterations.',
         },
       ],
     },
