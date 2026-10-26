@@ -41,7 +41,7 @@ const meta = [
 
     {
       cs.sections.map((s) => (
-        s.number === '02' ? <ResearchSection /> : <section class="sec" aria-labelledby={`s-${s.number}`}>
+        cs.slug === 'lyra' && s.number === '02' ? <ResearchSection /> : <section class="sec" aria-labelledby={`s-${s.number}`}>
           <div class="container sec__inner">
             <div class="sec__label" data-reveal>
               <span class="eyebrow">{s.number}</span>
